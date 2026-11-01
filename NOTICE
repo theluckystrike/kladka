@@ -1,0 +1,15 @@
+Kładka
+Copyright 2026 Michal Lip
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The structure of the rule engine in src/rules.mjs (validated frozen rule
+objects, capped findings per rule, position-sorted findings, reverse-order fix
+application) is adapted from bln-mcp-grammar-server
+(https://github.com/theluckystrike/bln-mcp-grammar-server), released under
+the MIT License, Copyright (c) Michal Lip. The Ukrainian-to-Polish and
+Ukrainian-to-English rules and their Ukrainian explanations are new.
+
+The language model is not part of this repository. Kladka is tested with
+EuroLLM-9B-Instruct-2512 by the UTTER project (Apache License 2.0), in the
+GGUF quantization published by mradermacher on Hugging Face.

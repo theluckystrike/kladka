@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kładka</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <span class="logo" aria-hidden="true">⌒</span>
+    <div>
+      <h1>Kładka</h1>
+      <p class="sub">Офлайн-помічник для листів польською та англійською</p>
+    </div>
+  </div>
+  <div class="status">
+    <span id="model-status" class="pill">Модель: перевірка…</span>
+    <span class="pill pill-private">Текст не залишає цей комп’ютер</span>
+    <button id="new-person" class="ghost" title="Очистити все для наступної людини">Нова людина</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="panel input">
+    <h2>1. Що ви пишете?</h2>
+    <div id="tasks" class="tasks" role="radiogroup" aria-label="Тип листа"></div>
+
+    <h2>2. Якою мовою має бути лист?</h2>
+    <div class="targets" role="radiogroup" aria-label="Мова листа">
+      <label><input type="radio" name="target" value="pl" checked> Польська</label>
+      <label><input type="radio" name="target" value="en"> Англійська</label>
+    </div>
+
+    <h2>3. Ваша чернетка</h2>
+    <p class="hint">Можна змішувати українську, польську й англійську.</p>
+    <textarea id="draft" rows="12" spellcheck="false" placeholder="Напишіть або вставте текст листа…"></textarea>
+    <div class="row">
+      <button id="check" class="primary">Перевірити</button>
+      <button id="example" class="ghost">Приклад</button>
+      <span id="counter" class="muted"></span>
+    </div>
+    <p id="idle-note" class="muted small"></p>
+  </section>
+
+  <section class="panel output" aria-live="polite">
+    <div id="empty" class="empty">Тут з’являться пропозиції до вашого тексту з поясненнями українською, перевірка тону і зворотний переклад. Ви вирішуєте, що прийняти.</div>
+
+    <div id="rules-block" class="block" hidden>
+      <h2>Швидка перевірка правилами <span id="rules-count" class="count"></span></h2>
+      <p class="hint">Працює без моделі. Типові помилки україномовних.</p>
+      <ul id="rules" class="findings"></ul>
+    </div>
+
+    <div id="progress" class="block progress" hidden>
+      <div class="spinner" aria-hidden="true"></div>
+      <span>Локальна модель працює. Зазвичай це займає до хвилини.</span>
+    </div>
+
+    <div id="errors" class="block errors" hidden></div>
+
+    <div id="coach-block" class="block" hidden>
+      <h2>Ваш текст і пропозиції</h2>
+      <p class="hint">Ви автор. Кожну пропозицію можна прийняти або відхилити. Змінюються лише прийняті місця.</p>
+      <pre id="marked" class="corrected marked"></pre>
+      <ol id="changes" class="changes"></ol>
+      <div class="row">
+        <button id="accept-all" class="ghost">Прийняти всі</button>
+        <button id="reject-all" class="ghost">Відхилити всі</button>
+      </div>
+    </div>
+
+    <div id="result-block" class="block" hidden>
+      <h2>Ваш текст з прийнятими змінами</h2>
+      <pre id="result" class="corrected"></pre>
+      <div class="row"><button id="copy" class="ghost">Копіювати</button><span id="copied" class="muted"></span></div>
+    </div>
+
+    <div id="register-block" class="block" hidden>
+      <h2>Тон і стиль</h2>
+      <p><span id="register-level" class="badge"></span> <span id="register-note"></span></p>
+    </div>
+
+    <details id="full-block" class="block" hidden>
+      <summary>Показати повну версію від моделі <span id="target-label" class="count"></span></summary>
+      <p class="hint">Модель переписала весь лист. Використовуйте як підказку, а не як готовий текст.</p>
+      <pre id="corrected" class="corrected"></pre>
+    </details>
+
+    <div id="meaning-block" class="block" hidden>
+      <h2>Перевірка змісту</h2>
+      <p class="hint">Повну версію перекладено назад українською окремим запитом до тієї ж моделі. Це допомога для перевірки, а не доказ: модель може помилитися двічі.</p>
+      <div class="compare">
+        <div><h3>Ваша чернетка</h3><pre id="orig"></pre></div>
+        <div><h3>Що каже повна версія</h3><pre id="back"></pre></div>
+      </div>
+    </div>
+
+    <p id="timing" class="muted"></p>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>Kładka допомагає писати, але може помилятися. Це не юридична порада. Перевіряйте важливі дані: дати, суми, номери справ.</p>
+  <p>На цьому комп’ютері зберігаються лише лічильники (день, кількість перевірок, тип листа, мова, натискання «Нова людина»), без жодного тексту.
+    <button id="copy-counts" class="link">Копіювати лічильники</button> <span id="counts-copied" class="muted"></span></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

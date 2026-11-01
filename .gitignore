@@ -1,0 +1,7 @@
+/models
+*.gguf
+*.gguf.part
+node_modules/
+.DS_Store
+*.log
+data/

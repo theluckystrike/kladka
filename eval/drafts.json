@@ -1,0 +1,385 @@
+{
+  "note": "SYNTHETIC test set. All drafts, names, numbers and case references were written for this eval by the project author. They are not real people or real messages. 'expect_rules' lists rule ids the rule engine should fire. 'facts' lists strings that must survive unchanged in the corrected text. 'expect_register' is the author's label for clear cases only (null = not labelled).",
+  "drafts": [
+    {
+      "id": "landlord-pl-1",
+      "task": "landlord",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Dzień dobry Pan Nowak,\nu mnie w kwatera nie działa ogrzewanie od 3 listopada. Dzwoniłam po telefonu dwa razy ale nikt nie odpowiedział. Proszę naprawić to szybko bo w mieszkaniu jest 14 stopni a u mnie jest mała dziecka.\nczekam odpowiedzi\nOksana Kovalenko",
+      "expect_rules": [
+        "pl-ff-kwatera",
+        "pl-po-telefonie",
+        "pl-u-mnie-jest",
+        "pl-czekam-na-odpowiedz"
+      ],
+      "facts": [
+        "Nowak",
+        "3 listopada",
+        "14",
+        "Oksana Kovalenko"
+      ],
+      "expect_register": null
+    },
+    {
+      "id": "landlord-pl-2",
+      "task": "landlord",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Cześć, chcę powiedzieć że w łazience jest cieknie woda z sufitu вже тиждень. Możesz przysłać hydraulika w sobotę? Mieszkam na ulicy Lipowa 12 m. 4.\nDziekuje, Iryna",
+      "expect_rules": [
+        "pl-informal-greeting",
+        "pl-ty-form-to-stranger",
+        "pl-mieszkam-na-ulicy",
+        "pl-diacritics",
+        "any-cyrillic-left"
+      ],
+      "facts": [
+        "Lipowa 12",
+        "Iryna"
+      ],
+      "expect_register": "too_informal"
+    },
+    {
+      "id": "landlord-pl-3",
+      "task": "landlord",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Szanowna Pani,\nprzepraszam ale czynsz za listopad zapłacę 15 listopada a nie 10, bo pracodawca wypłaca wynagrodzenie później. Kwota 2400 zł przeleję na to samo konto. Prosze o zrozumienie.\nZ poważaniem\nDmytro Shevchuk",
+      "expect_rules": [
+        "pl-diacritics"
+      ],
+      "facts": [
+        "15 listopada",
+        "10",
+        "2400 zł",
+        "Dmytro Shevchuk"
+      ],
+      "expect_register": "ok"
+    },
+    {
+      "id": "landlord-en-1",
+      "task": "landlord",
+      "target": "en",
+      "synthetic": true,
+      "draft": "Hello Mr Brown,\nI want to tell that the washing machine in apartment is broken since two weeks. I made a photo, on the photo you can see water on floor. Please explain me who must pay for repair.\nWaiting for your answer,\nOlena",
+      "expect_rules": [
+        "en-informal-greeting",
+        "en-i-want",
+        "en-since-duration",
+        "en-make-photo",
+        "en-on-photo",
+        "en-explain-me",
+        "en-waiting-for-answer"
+      ],
+      "facts": [
+        "Brown",
+        "Olena"
+      ],
+      "expect_register": null
+    },
+    {
+      "id": "landlord-en-2",
+      "task": "landlord",
+      "target": "en",
+      "synthetic": true,
+      "draft": "Dear Mrs Kowalska,\nI am agree to extend the contract for one year, but the rent 3100 PLN it depends from you. Can we meet on 12 November? Я можу прийти після 18:00.\nBest regards,\nSerhii Melnyk",
+      "expect_rules": [
+        "en-am-agree",
+        "en-depend-from",
+        "any-cyrillic-left"
+      ],
+      "facts": [
+        "Kowalska",
+        "3100",
+        "12",
+        "18:00",
+        "Serhii Melnyk"
+      ],
+      "expect_register": "ok"
+    },
+    {
+      "id": "school-pl-1",
+      "task": "school",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Cześć, to mama Andrija z 3b. Andrij jutro nie będzie w szkole bo маємо візит у лікаря o 10:00. Możesz dać mi zadanie domowe? Dziekuje",
+      "expect_rules": [
+        "pl-informal-greeting",
+        "pl-ty-form-to-stranger",
+        "any-cyrillic-left",
+        "pl-diacritics"
+      ],
+      "facts": [
+        "3b",
+        "10:00"
+      ],
+      "expect_register": "too_informal"
+    },
+    {
+      "id": "school-pl-2",
+      "task": "school",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Dzień dobry Pani Wychowawczyni,\nmoja córka Sofia z klasy 5a ma problem z matematyką, ona nie rozumie ułamki. Czy możemy spotkać się po lekcjach w czwartek? Mnie pasuje po 16:00. Chcę przyjmować udział w zebraniu rodziców ale pracuję do 17.\nZ poważaniem, Halyna Tkachenko",
+      "expect_rules": [
+        "pl-ff-przyjmowac-udzial"
+      ],
+      "facts": [
+        "Sofia",
+        "5a",
+        "16:00",
+        "17",
+        "Halyna Tkachenko"
+      ],
+      "expect_register": "ok"
+    },
+    {
+      "id": "school-pl-3",
+      "task": "school",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Szanowny Pan Dyrektor,\nproszę o zwolnienie syna Maksyma z lekcji wf na 2 tygodnie, bo він зламав руку. Dowidka od lekarza dam w poniedziałek.\nViktor Hnatiuk",
+      "expect_rules": [
+        "pl-szanowny-pan-vocative",
+        "pl-ff-dowidka",
+        "any-cyrillic-left"
+      ],
+      "facts": [
+        "Maksym",
+        "2",
+        "Viktor Hnatiuk"
+      ],
+      "expect_register": null
+    },
+    {
+      "id": "school-en-1",
+      "task": "school",
+      "target": "en",
+      "synthetic": true,
+      "draft": "Hi teacher, my son Mark don't understand homework for English, he don't know nothing about present perfect. Can you explain us on meeting? He is in class 6c.\nThanks, Tetiana",
+      "expect_rules": [
+        "en-informal-greeting",
+        "en-he-dont",
+        "en-double-negative",
+        "en-explain-me"
+      ],
+      "facts": [
+        "Mark",
+        "6c",
+        "Tetiana"
+      ],
+      "expect_register": "too_informal"
+    },
+    {
+      "id": "school-en-2",
+      "task": "school",
+      "target": "en",
+      "synthetic": true,
+      "draft": "Dear Ms Taylor,\nmy daughter Anna will be absent from 4 to 8 December because we must go to Ukraine for documents. Please tell me which tasks she must do. Дякую за розуміння.\nKind regards,\nMaryna Lysenko",
+      "expect_rules": [
+        "any-cyrillic-left"
+      ],
+      "facts": [
+        "Taylor",
+        "Anna",
+        "4",
+        "8",
+        "Maryna Lysenko"
+      ],
+      "expect_register": "ok"
+    },
+    {
+      "id": "job-pl-1",
+      "task": "job",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Dzień dobry,\nszukam pracę jako księgowa. Mnie 41 lat, mam 15 lat doświadczenia w Kijowie. Znam 1C, Excel i teraz uczę się Symfonia. Jestem акуратна i odpowiedzialna. Mogę zacząć od 1 grudnia.\nNatalia Bondar",
+      "expect_rules": [
+        "pl-szukac-genitive",
+        "pl-mnie-lat",
+        "any-cyrillic-left"
+      ],
+      "facts": [
+        "41",
+        "15",
+        "1C",
+        "Symfonia",
+        "1 grudnia",
+        "Natalia Bondar"
+      ],
+      "expect_register": null
+    },
+    {
+      "id": "job-pl-2",
+      "task": "job",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Szanowni Państwo,\nodpowiadam na ogłoszenie o robota magazyniera w magazynie w Poznaniu. Mam prawo jazdy kat. B i uprawnienia na wózek widłowy. Pracowałem 6 lat w Charkowie jako kierowca. Mogę pracować na zmiany.\nZ poważaniem\nOleh Kravets",
+      "expect_rules": [
+        "pl-ff-robota",
+        "pl-ff-magazyn"
+      ],
+      "facts": [
+        "Poznaniu",
+        "6",
+        "Oleh Kravets"
+      ],
+      "expect_register": "ok"
+    },
+    {
+      "id": "job-en-1",
+      "task": "job",
+      "target": "en",
+      "synthetic": true,
+      "draft": "Hello,\nI am write about vacancy of accountant in your company. I have 12 years experience, I worked like a chief accountant in Kharkiv since 2014 to 2022. I am very accurate and responsible. I know 1C and Excel, now I learn SAP.\nWaiting for your answer.",
+      "expect_rules": [
+        "en-informal-greeting",
+        "en-work-like",
+        "en-ff-accurate",
+        "en-waiting-for-answer"
+      ],
+      "facts": [
+        "12",
+        "Kharkiv",
+        "2014",
+        "2022",
+        "1C",
+        "SAP"
+      ],
+      "expect_register": "too_informal"
+    },
+    {
+      "id": "job-en-2",
+      "task": "job",
+      "target": "en",
+      "synthetic": true,
+      "draft": "Dear Sir or Madam,\nI apply for position of nurse in your clinic. I have 34 years, I am nurse with 10 years experience in Lviv hospital. My speciality is surgery nursing. I am married with an engineer and we live in Wrocław since three years.\nYours faithfully,\nKateryna Savchuk",
+      "expect_rules": [
+        "en-have-years",
+        "en-article-missing-a-job",
+        "en-ff-speciality",
+        "en-married-with",
+        "en-since-duration"
+      ],
+      "facts": [
+        "34",
+        "10",
+        "Lviv",
+        "Wrocław",
+        "Kateryna Savchuk"
+      ],
+      "expect_register": "ok"
+    },
+    {
+      "id": "job-en-3",
+      "task": "job",
+      "target": "en",
+      "synthetic": true,
+      "draft": "Good day! I saw your offer in internet for a programmer. Я працював 5 років Java розробником у Дніпрі. I have much projects with Spring and PostgreSQL. According to me I am good in team work.\nDenys Romanenko",
+      "expect_rules": [
+        "en-in-internet",
+        "any-cyrillic-left",
+        "en-much-countable",
+        "en-ff-according-to-me"
+      ],
+      "facts": [
+        "5",
+        "Java",
+        "Spring",
+        "PostgreSQL",
+        "Denys Romanenko"
+      ],
+      "expect_register": null
+    },
+    {
+      "id": "office-pl-1",
+      "task": "office",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Szanowny Pan,\nprosze o wydanie zaświadczenia o niekaralności dla oformienia pracy. Mój numer PESEL 85031712345, sprawa nr WSO-II.6151.1234.2025. Ja już byłam w urzędzie 20.10 ale nie było mojej zajawy w systemie.\nDo widzenia\nNatalia Bondar",
+      "expect_rules": [
+        "pl-szanowny-pan-vocative",
+        "pl-diacritics",
+        "pl-ff-oformic",
+        "pl-ff-zajawa",
+        "pl-do-widzenia-closing"
+      ],
+      "facts": [
+        "85031712345",
+        "WSO-II.6151.1234.2025",
+        "20.10",
+        "Natalia Bondar"
+      ],
+      "expect_register": null
+    },
+    {
+      "id": "office-pl-2",
+      "task": "office",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Dzień dobry,\nw ZUS dostałam pismo że muszę zwrócić 1250 zł świadczenia 800 plus za sierpień. Ale моя дитина весь час жила зі мною в Польщі. Proszę wyjaśnić dlaczego i co mam zrobić. Numer sprawy 0412/2026/ZUS.\nOlha Marchenko",
+      "expect_rules": [
+        "any-cyrillic-left"
+      ],
+      "facts": [
+        "1250 zł",
+        "800",
+        "0412/2026/ZUS",
+        "Olha Marchenko"
+      ],
+      "expect_register": null
+    },
+    {
+      "id": "office-pl-3",
+      "task": "office",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Szanowni Państwo,\njestem zarejestrowany w PUP jako bezrobotny od 2 września. Chcę zapisać się na kurs języka polskiego. Gdzie mam złożyć zajawę i jakie dokumenty są potrzebne? Mogę przyjść w każdy dzień oprócz środy.\nZ poważaniem,\nAndrii Polishchuk",
+      "expect_rules": [
+        "pl-ff-zajawa"
+      ],
+      "facts": [
+        "PUP",
+        "2 września",
+        "Andrii Polishchuk"
+      ],
+      "expect_register": "ok"
+    },
+    {
+      "id": "office-pl-4",
+      "task": "office",
+      "target": "pl",
+      "synthetic": true,
+      "draft": "Dzień dobry,\nmam pytanie o kartę pobytu. Złożyłam wniosek 14 marca 2026, numer sprawy WSC-II-S.6151.98765.2026. Do teraz nie ma decyzji a moja karta UKR kończy się 4 grudnia. Чи можу я виїжджати за кордон поки чекаю? Dziękuję za odpowiedź.\nYuliia Zinchenko",
+      "expect_rules": [
+        "any-cyrillic-left"
+      ],
+      "facts": [
+        "14 marca 2026",
+        "WSC-II-S.6151.98765.2026",
+        "4 grudnia",
+        "Yuliia Zinchenko"
+      ],
+      "expect_register": "ok"
+    },
+    {
+      "id": "office-en-1",
+      "task": "office",
+      "target": "en",
+      "synthetic": true,
+      "draft": "Hello,\nI need certificate about my income for 2025 for the bank. I went to office on Monday but it was closed. Can I order it in internet? My tax number NIP 5213456789.\nThank you, Roman Bilyk",
+      "expect_rules": [
+        "en-informal-greeting",
+        "en-article-missing-the-place",
+        "en-in-internet"
+      ],
+      "facts": [
+        "2025",
+        "5213456789",
+        "Roman Bilyk"
+      ],
+      "expect_register": null
+    }
+  ]
+}

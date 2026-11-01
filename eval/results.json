@@ -1,0 +1,1828 @@
+{
+  "generated_at": "2026-11-01T13:22:22.203Z",
+  "note": "Real measurements from one run on the machine below. Test drafts are synthetic (eval/drafts.json). The 20-draft run used the current prompts and schema. Two later changes do not call the model and were applied to the stored outputs by eval/derive.mjs: stripping « » quotes from change fragments (affects changes_located_inline) and the combined rule+model register check.",
+  "machine": {
+    "platform": "darwin 25.6.0",
+    "cpu": "Apple M3 Pro",
+    "cores": 11,
+    "ram_gb": 36
+  },
+  "llama_server": {
+    "version": "version: 0.8.0 (build 11960, commit 8642541b2)",
+    "url": "http://127.0.0.1:8080"
+  },
+  "model": "EuroLLM-9B-Instruct-2512.Q4_K_M.gguf (mradermacher/EuroLLM-9B-Instruct-2512-GGUF, sha256 fe9b50d4ba67eb0131f1ceeaab2e56ea8fb6b2bbc37391d3219c791c3b140a28), llama-server -c 8192 -ngl 99 --no-jinja",
+  "settings": {
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "seed": 42,
+    "constrained_json": true,
+    "back_translation": true
+  },
+  "summary": {
+    "drafts": 20,
+    "coach_json_valid_first_try": "17/20",
+    "coach_json_valid_after_fallback": "20/20",
+    "coach_content_checks_clean": "20/20",
+    "back_json_valid_first_try": "20/20",
+    "drafts_with_invented_numbers": "1/20",
+    "changes_total": 83,
+    "changes_with_rule_reason": 54,
+    "facts_preserved": "72/78",
+    "seconds_per_draft_median": 39.54,
+    "seconds_per_draft_mean": 50.97,
+    "seconds_per_draft_p90": 128.08,
+    "seconds_per_draft_max": 141.55,
+    "gen_tokens_per_second_mean": 21.44,
+    "gen_tokens_per_second_min": 18.52,
+    "prompt_tokens_per_second_mean": 187.39,
+    "llama_server_rss_mb_idle": 6452,
+    "llama_server_rss_mb_peak": 7222,
+    "node_rss_mb_peak": 55,
+    "rule_hits_total": 64,
+    "rule_expected_found": "62/62",
+    "rules_ms_max": 81.66,
+    "changes_located_inline": "77/83",
+    "register_model_agrees_with_label": "8/12",
+    "register_model_caught_informal": "0/4",
+    "register_combined_agrees_with_label": "12/12",
+    "register_combined_caught_informal": "4/4"
+  },
+  "drafts": [
+    {
+      "id": "landlord-pl-1",
+      "task": "landlord",
+      "target": "pl",
+      "rules": {
+        "hits": 4,
+        "ms": 72.43,
+        "ids": [
+          "pl-ff-kwatera",
+          "pl-po-telefonie",
+          "pl-u-mnie-jest",
+          "pl-czekam-na-odpowiedz"
+        ],
+        "expected": 4,
+        "expected_found": 4
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 27.78,
+        "prompt_tokens": 818,
+        "gen_tokens": 508,
+        "gen_tok_per_s": 20.92,
+        "prompt_tok_per_s": 231.62,
+        "finish": "stop",
+        "errors": [],
+        "changes": 4,
+        "register": "ok",
+        "expect_register": null,
+        "reasons_from_rules": 4
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 4.84,
+        "gen_tokens": 97,
+        "gen_tok_per_s": 22.33
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 4,
+        "kept": 4,
+        "missing": []
+      },
+      "seconds_total": 32.63,
+      "output": {
+        "corrected": "Dzień dobry Panie Nowaku,\n\nU mnie w mieszkaniu nie działa ogrzewanie od 3 listopada. Dzwoniłam przez telefon dwa razy, ale nikt nie odpowiedział. Proszę szybko to naprawić, ponieważ w mieszkaniu jest 14 stopni, a u mnie jest mała dziecko.\n\nCzekam na odpowiedź,\nOksana Kovalenko",
+        "changes": [
+          {
+            "from": "«kwatera»",
+            "to": "w mieszkaniu",
+            "type": "translation",
+            "why_uk": "Хибний друг перекладача: українське «квартира» польською «mieszkanie». «Kwatera» означає тимчасове житло або військову квартиру.",
+            "why_model_uk": "Українське слово «квартира» перекладається як «mieszkanie», а не «kwatera», яке означає тимчасове житло або військову квартиру.",
+            "rule_id": "pl-ff-kwatera"
+          },
+          {
+            "from": "«po telefonu»",
+            "to": "przez telefon",
+            "type": "translation",
+            "why_uk": "Калька з «по телефону». Польською «rozmawiać przez telefon», «kontakt telefoniczny».",
+            "why_model_uk": "Фраза «по телефону» перекладається як «przez telefon», оскільки в польській мові це калька з української.",
+            "rule_id": "pl-po-telefonie"
+          },
+          {
+            "from": "«u mnie jest»",
+            "to": "u mnie jest mała dziecko",
+            "type": "vocabulary",
+            "why_uk": "Калька з «у мене є». Польською природніше «mam dwoje dzieci», «mamy problem z ogrzewaniem».",
+            "why_model_uk": "Фраза «у мене є» перекладається як «u mnie jest», але в українській мові це звучить як калька. У польській мові потрібно використовувати природніші вирази, наприклад, «mam dwoje dzieci» або «u mnie jest mała dziecko».",
+            "rule_id": "pl-u-mnie-jest"
+          },
+          {
+            "from": "«czekam odpowiedzi»",
+            "to": "czekam na odpowiedź",
+            "type": "grammar",
+            "why_uk": "Українською «чекаю відповіді» (родовий), а польською потрібен прийменник: «czekam na odpowiedź», «czekam na Pana odpowiedź».",
+            "why_model_uk": "Українське «чекаю відповіді» (родовий) перекладається як «czekam na odpowiedź» у польській мові, оскільки потрібно використовувати прийменник з прийменником.",
+            "rule_id": "pl-czekam-na-odpowiedz"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Лист написаний українською мовою, але містить деякі помилки, які можна виправити, щоб він був зрозумілим для польського орендодавця."
+        },
+        "back_translation_uk": "Добрий день, пане Новаку,\n\nУ мене в квартирі не працює опалення з 3 листопада. Дзвонила по телефону двічі, але ніхто не відповів. Будь ласка, швидко це виправте, оскільки в квартирі 14 градусів, а у мене є маленька дитина.\n\nЧекаю на відповідь,\nОксана Коваленко"
+      }
+    },
+    {
+      "id": "landlord-pl-2",
+      "task": "landlord",
+      "target": "pl",
+      "rules": {
+        "hits": 5,
+        "ms": 81.66,
+        "ids": [
+          "pl-informal-greeting",
+          "any-cyrillic-left",
+          "pl-ty-form-to-stranger",
+          "pl-mieszkam-na-ulicy",
+          "pl-diacritics"
+        ],
+        "expected": 5,
+        "expected_found": 5
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 41.42,
+        "prompt_tokens": 318,
+        "gen_tokens": 834,
+        "gen_tok_per_s": 20.83,
+        "prompt_tok_per_s": 226.01,
+        "finish": "stop",
+        "errors": [],
+        "changes": 4,
+        "register": "ok",
+        "expect_register": "too_informal",
+        "reasons_from_rules": 4
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 3.83,
+        "gen_tokens": 67,
+        "gen_tok_per_s": 20.8
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 2,
+        "kept": 1,
+        "missing": [
+          "Iryna"
+        ]
+      },
+      "seconds_total": 45.25,
+      "output": {
+        "corrected": "Szanowna Pani, chciałbym poinformować, że w łazience na suficie od tygodnia cieknie woda. Czy mogłaby Pani wysłać hydraulika w sobotę? Mieszkam przy ulicy Lipowa 12, m. 4.",
+        "changes": [
+          {
+            "from": "Cześć, chcę powiedzieć że w łazience jest cieknie woda z sufitu już tydzień.",
+            "to": "Szanowna Pani, chciałbym poinformować, że w łazience na suficie od tygodnia cieknie woda.",
+            "type": "translation",
+            "why_uk": "«Cześć/Hej» звучить як до друга. «Witam» багато хто в Польщі вважає неввічливим від молодшої чи нижчої за статусом особи. До установи, орендодавця, вчителя краще «Dzień dobry» або «Szanowna Pani / Szanowny Panie».",
+            "why_model_uk": "Треба використовувати формальне звернення 'Szanowna Pani / Szanowny Panie', а не розмовне 'Cześć'. 'Chciałbym poinformować' звучить більш коректно, ніж 'chcę powiedzieć'. 'Cieknie' замість 'cieknie' — граматична помилка з артиклем.",
+            "rule_id": "pl-informal-greeting"
+          },
+          {
+            "from": "Możesz przysłać hydraulika w sobotę?",
+            "to": "Czy mogłaby Pani wysłać hydraulika w sobotę?",
+            "type": "register",
+            "why_uk": "Звертання на «ти» до незнайомої людини чи установи польською грубе. Замість «możesz» пишіть «może Pan / może Pani», замість «twój» — «Pana / Pani».",
+            "why_model_uk": "Треба використовувати формальне 'Czy mogłaby Pani' замість розмовного 'Możesz'. 'Wysłać' замість 'przysłać' — граматична помилка з артиклем.",
+            "rule_id": "pl-ty-form-to-stranger"
+          },
+          {
+            "from": "Mieszkam na ulicy Lipowa 12 m. 4.",
+            "to": "Mieszkam przy ulicy Lipowa 12, m. 4.",
+            "type": "punctuation",
+            "why_uk": "Українською «живу на вулиці...», польською адресу пишуть «mieszkam przy ulicy Długiej 5» або «ul. Długa 5».",
+            "why_model_uk": "Треба додати 'przy' перед назвою вулиці, оскільки в українській мові це 'на вулиці', а в польській — 'przy ulicy'. 'Mieszkam na ulicy' — граматична помилка з артиклем.",
+            "rule_id": "pl-mieszkam-na-ulicy"
+          },
+          {
+            "from": "Dziekuje, Iryna",
+            "to": "Dziękuję",
+            "type": "vocabulary",
+            "why_uk": "Без польських літер (ą, ę, ś, ż...) текст виглядає недбало, а в офіційному листі це помітно. Наприклад «proszę», «dziękuję», «się».",
+            "why_model_uk": "Треба виправити помилку з артиклем у слові 'Dziekuje' на 'Dziękuję', оскільки в українській мові це 'дякую', а в польській — 'dziękuję'.",
+            "rule_id": "pl-diacritics"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Використання 'Szanowna Pani / Szanowny Panie' є ввічливим і формальним, що відповідає зверненню до орендодавця. 'Można wysłać' звучить більш формально, ніж 'możesz przysłać', оскільки використовується формальна мова."
+        },
+        "back_translation_uk": "Шановна Пані, хотів би повідомити, що в ванній кімнаті на стелі від тижня тече вода. Чи могла б Ви відправити сантехніка в суботу? Я живу на вулиці Липова 12, кв. 4."
+      }
+    },
+    {
+      "id": "landlord-pl-3",
+      "task": "landlord",
+      "target": "pl",
+      "rules": {
+        "hits": 1,
+        "ms": 1.19,
+        "ids": [
+          "pl-diacritics"
+        ],
+        "expected": 1,
+        "expected_found": 1
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 27.74,
+        "prompt_tokens": 161,
+        "gen_tokens": 553,
+        "gen_tok_per_s": 20.53,
+        "prompt_tok_per_s": 192.61,
+        "finish": "stop",
+        "errors": [],
+        "changes": 3,
+        "register": "ok",
+        "expect_register": "ok",
+        "reasons_from_rules": 1
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 4.29,
+        "gen_tokens": 82,
+        "gen_tok_per_s": 21.52
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 4,
+        "kept": 3,
+        "missing": [
+          "Dmytro Shevchuk"
+        ]
+      },
+      "seconds_total": 32.03,
+      "output": {
+        "corrected": "Szanowna Pani,\n\nPrzepraszam, ale czynsz za listopad zapłacę 15 listopada, a nie 10, ponieważ pracodawca wypłaca wynagrodzenie później. Kwota 2400 zł zostanie przelana na to samo konto. Proszę o zrozumienie.",
+        "changes": [
+          {
+            "from": "Prosze o zrozumienie.",
+            "to": "Proszę o zrozumienie.",
+            "type": "translation",
+            "why_uk": "Без польських літер (ą, ę, ś, ż...) текст виглядає недбало, а в офіційному листі це помітно. Наприклад «proszę», «dziękuję», «się».",
+            "why_model_uk": "Треба використовувати форму 'Proszę' замість 'Prosze', бо це формальна мова.",
+            "rule_id": "pl-diacritics"
+          },
+          {
+            "from": "10",
+            "to": "15 listopada",
+            "type": "punctuation",
+            "why_uk": "У даті потрібно використовувати 'listę' замість цифри, щоб було зрозуміліше."
+          },
+          {
+            "from": "2400 zł",
+            "to": "2400 zł zostanie przelana na to samo konto.",
+            "type": "word_order",
+            "why_uk": "У польській мові потрібно правильно ставити артиклі та закінчення слів, щоб було зрозуміліше."
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Лист написаний від особи, яка звертається до приватного власника неформально, але коректно. Використовуються правильні форми звернення та структура листа."
+        },
+        "back_translation_uk": "Шановна Пані,\n\nВибачте, але орендну плату за листопад заплачу 15 листопада, а не 10, оскільки роботодавець виплачує заробітну плату пізніше. Сума 2400 злотих буде переведена на те саме рахунок. Прошу про розуміння."
+      }
+    },
+    {
+      "id": "landlord-en-1",
+      "task": "landlord",
+      "target": "en",
+      "rules": {
+        "hits": 7,
+        "ms": 57.2,
+        "ids": [
+          "en-informal-greeting",
+          "en-i-want",
+          "en-since-duration",
+          "en-make-photo",
+          "en-on-photo",
+          "en-explain-me",
+          "en-waiting-for-answer"
+        ],
+        "expected": 7,
+        "expected_found": 7
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 35.75,
+        "prompt_tokens": 967,
+        "gen_tokens": 635,
+        "gen_tok_per_s": 20.11,
+        "prompt_tok_per_s": 229.79,
+        "finish": "stop",
+        "errors": [],
+        "changes": 5,
+        "register": "ok",
+        "expect_register": null,
+        "reasons_from_rules": 5
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 4.99,
+        "gen_tokens": 91,
+        "gen_tok_per_s": 21.13
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 2,
+        "kept": 1,
+        "missing": [
+          "Olena"
+        ]
+      },
+      "seconds_total": 40.74,
+      "output": {
+        "corrected": "Dear Mr. Brown,\n\nI would like to inform you that the washing machine in the apartment has been broken for two weeks. I took a photo, and in the photo you can see water on the floor. Please explain to me who must pay for the repair.\nI look forward to hearing from you.",
+        "changes": [
+          {
+            "from": "Hello Mr Brown",
+            "to": "Dear Mr. Brown",
+            "type": "translation",
+            "why_uk": "У діловому листі англійською пишуть «Dear Ms Smith,» або «Dear Sir or Madam,». «Hi/Hey» — для друзів і колег.",
+            "why_model_uk": "Використання 'Dear Mr. Brown' є ввічливішим, ніж 'Hello Mr. Brown'.",
+            "rule_id": "en-informal-greeting"
+          },
+          {
+            "from": "I want to tell that the washing machine in apartment is broken since two weeks.",
+            "to": "I would like to inform you that the washing machine in the apartment has been broken for two weeks.",
+            "type": "grammar",
+            "why_uk": "Пряме «I want» у проханні звучить різко. Ввічливіше «I would like to ...», «Could you please ...».",
+            "why_model_uk": "Пряме 'I want' у проханні звучить різко. Ввічливіше 'I would like to ...', 'Could you please ...'.",
+            "rule_id": "en-i-want"
+          },
+          {
+            "from": "I made a photo, on the photo you can see water on floor.",
+            "to": "I took a photo, and in the photo you can see water on the floor.",
+            "type": "vocabulary",
+            "why_uk": "Калька з «зробити фото». Англійською «take a photo».",
+            "why_model_uk": "Калька з 'зробити фото'. Англійською 'take a photo'.",
+            "rule_id": "en-make-photo"
+          },
+          {
+            "from": "Please explain me who must pay for repair.",
+            "to": "Please explain to me who must pay for the repair.",
+            "type": "grammar",
+            "why_uk": "Калька з «поясніть мені» (давальний відмінок). Англійською потрібне «to»: «explain to me».",
+            "why_model_uk": "Калька з 'поясніть мені' (давальний відмінок). Англійською потрібне 'to': 'explain to me'.",
+            "rule_id": "en-explain-me"
+          },
+          {
+            "from": "Waiting for your answer",
+            "to": "I look forward to hearing from you.",
+            "type": "register",
+            "why_uk": "Калька з «чекаю на вашу відповідь». Стандартна англійська фраза: «I look forward to hearing from you.»",
+            "why_model_uk": "Калька з 'чекаю на вашу відповідь'. Стандартна англійська фраза: 'I look forward to hearing from you.'",
+            "rule_id": "en-waiting-for-answer"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Використання 'Dear Mr. Brown' є ввічливим, але можна також написати 'Dear Sir or Madam' для анонімного листа. 'I would like to inform you' звучить ввічливіше, ніж 'I want to tell that'. 'Please explain to me' більш коректне, ніж 'explain me'."
+        },
+        "back_translation_uk": "Шановний пане Браун,\n\nЯ хотів би повідомити вас, що пральна машина в квартирі зламана вже два тижні. Я зробив фото, і на фото ви можете побачити воду на підлозі. Будь ласка, поясніть мені, хто має заплатити за ремонт.\n\nЗ нетерпінням чекаю на вашу відповідь."
+      }
+    },
+    {
+      "id": "landlord-en-2",
+      "task": "landlord",
+      "target": "en",
+      "rules": {
+        "hits": 3,
+        "ms": 42.46,
+        "ids": [
+          "en-am-agree",
+          "en-depend-from",
+          "any-cyrillic-left"
+        ],
+        "expected": 3,
+        "expected_found": 3
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 35.03,
+        "prompt_tokens": 163,
+        "gen_tokens": 714,
+        "gen_tok_per_s": 20.87,
+        "prompt_tok_per_s": 192.82,
+        "finish": "stop",
+        "errors": [],
+        "changes": 5,
+        "register": "ok",
+        "expect_register": "ok",
+        "reasons_from_rules": 2
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 4.28,
+        "gen_tokens": 85,
+        "gen_tok_per_s": 22.56
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 5,
+        "kept": 5,
+        "missing": []
+      },
+      "seconds_total": 39.32,
+      "output": {
+        "corrected": "Dear Mrs. Kowalska,\nI agree to extend the contract for one year, but the rent of 3100 PLN depends on you. Can we meet on November 12? I can come after 18:00.\nBest regards,\nSerhii Melnyk",
+        "changes": [
+          {
+            "from": "I am agree to extend the contract for one year",
+            "to": "I agree to extend the contract for one year",
+            "type": "grammar",
+            "why_uk": "Калька з «я згоден». Англійською «agree» — дієслово, без «am»: «I agree».",
+            "why_model_uk": "Використано 'I agree' замість 'I am agree', оскільки 'agree' — це дієслово, яке не потребує допоміжного дієслова 'to be'.",
+            "rule_id": "en-am-agree"
+          },
+          {
+            "from": "rent 3100 PLN it depends from you",
+            "to": "the rent of 3100 PLN depends on you",
+            "type": "vocabulary",
+            "why_uk": "Калька з «залежати від». Англійською «depend on».",
+            "why_model_uk": "Використано 'depends on' замість 'depends from', оскільки 'depend on' — це стандартна конструкція для вираження залежності в англійській мові.",
+            "rule_id": "en-depend-from"
+          },
+          {
+            "from": "Can we meet on 12 November?",
+            "to": "Can we meet on November 12?",
+            "type": "punctuation",
+            "why_uk": "Додано пробіл після '12' для дотримання правил пунктуації в англійській мові."
+          },
+          {
+            "from": "Best regards, Serhii Melnyk",
+            "to": "Best regards,\nSerhii Melnyk",
+            "type": "punctuation",
+            "why_uk": "Додано двокрапку після 'Best regards' для стандартного оформлення ділового листа."
+          },
+          {
+            "from": "я можу прийти після 18:00",
+            "to": "I can come after 18:00.",
+            "type": "translation",
+            "why_uk": "Переклад речення 'я можу прийти після 18:00' на англійську мову з урахуванням правильного вживання часу та ввічливості."
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Використано формальне звернення 'Dear Mrs. Kowalska' замість 'Cześć' або 'Ty' для ввічливості. Уникано прямого звернення 'Pan/Pani' через відсутність контексту. Використано 'agree' замість 'am agree' для узгодження з граматикою англійської мови."
+        },
+        "back_translation_uk": "Шановна пані Ковальська,\nЯ згоден продовжити контракт на один рік, але орендна плата 3100 PLN залежить від вас. Чи зможемо ми зустрітися 12 листопада? Я можу приїхати після 18:00.\nЗ повагою,\nСергій Мельник"
+      }
+    },
+    {
+      "id": "school-pl-1",
+      "task": "school",
+      "target": "pl",
+      "rules": {
+        "hits": 4,
+        "ms": 2.26,
+        "ids": [
+          "pl-informal-greeting",
+          "any-cyrillic-left",
+          "pl-ty-form-to-stranger",
+          "pl-diacritics"
+        ],
+        "expected": 4,
+        "expected_found": 4
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 31.64,
+        "prompt_tokens": 890,
+        "gen_tokens": 591,
+        "gen_tok_per_s": 21.2,
+        "prompt_tok_per_s": 234,
+        "finish": "stop",
+        "errors": [],
+        "changes": 4,
+        "register": "ok",
+        "expect_register": "too_informal",
+        "reasons_from_rules": 3
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 3.11,
+        "gen_tokens": 60,
+        "gen_tok_per_s": 21.59
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 2,
+        "kept": 2,
+        "missing": []
+      },
+      "seconds_total": 34.76,
+      "output": {
+        "corrected": "Dzień dobry, to mama Andrija z 3b. Andrij jutro nie będzie w szkole, ponieważ mamy wizytę u lekarza o 10:00. Czy może Pani dać mi zadanie domowe? Dziękuję.",
+        "changes": [
+          {
+            "from": "Cześć, to mama Andrija z 3b.",
+            "to": "Dzień dobry, to mama Andrija z 3b.",
+            "type": "register",
+            "why_uk": "«Cześć/Hej» звучить як до друга. «Witam» багато хто в Польщі вважає неввічливим від молодшої чи нижчої за статусом особи. До установи, орендодавця, вчителя краще «Dzień dobry» або «Szanowna Pani / Szanowny Panie».",
+            "why_model_uk": "Повідомлення має бути формальним, тому 'Cześć' замінено на 'Dzień dobry'.",
+            "rule_id": "pl-informal-greeting"
+          },
+          {
+            "from": "Andrij jutro nie będzie w szkole bo маємо візит у лікаря o 10:00.",
+            "to": "Andrij jutro nie będzie w szkole, ponieważ mamy wizytę u lekarza o 10:00.",
+            "type": "spelling",
+            "why_uk": "Правильно вжито 'wizytę u lekarza' замість 'маємо візит у лікаря'."
+          },
+          {
+            "from": "Dziekuje",
+            "to": "Dziękuję",
+            "type": "spelling",
+            "why_uk": "Без польських літер (ą, ę, ś, ż...) текст виглядає недбало, а в офіційному листі це помітно. Наприклад «proszę», «dziękuję», «się».",
+            "why_model_uk": "Правильно вжито 'Dziękuję' замість 'Dziekuje' через відсутність польських літер.",
+            "rule_id": "pl-diacritics"
+          },
+          {
+            "from": "Możesz dać mi zadanie domowe?",
+            "to": "Czy może Pani dać mi zadanie domowe?",
+            "type": "register",
+            "why_uk": "Звертання на «ти» до незнайомої людини чи установи польською грубе. Замість «możesz» пишіть «może Pan / może Pani», замість «twój» — «Pana / Pani».",
+            "why_model_uk": "Правильно вжито 'Pani' замість 'możesz' у зверненні до вчителя.",
+            "rule_id": "pl-ty-form-to-stranger"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Лист написаний формально, але можна було б додати 'Pani' перед ім'ям вчителя."
+        },
+        "back_translation_uk": "Добрий день, це мама Андрія з 3b. Андрій завтра не буде в школі, оскільки маємо візит до лікаря о 10:00. Чи може пані дати мені домашнє завдання? Дякую."
+      }
+    },
+    {
+      "id": "school-pl-2",
+      "task": "school",
+      "target": "pl",
+      "rules": {
+        "hits": 1,
+        "ms": 0.99,
+        "ids": [
+          "pl-ff-przyjmowac-udzial"
+        ],
+        "expected": 1,
+        "expected_found": 1
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 36.25,
+        "prompt_tokens": 147,
+        "gen_tokens": 730,
+        "gen_tok_per_s": 20.52,
+        "prompt_tok_per_s": 207.81,
+        "finish": "stop",
+        "errors": [],
+        "changes": 3,
+        "register": "ok",
+        "expect_register": "ok",
+        "reasons_from_rules": 2
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 5.16,
+        "gen_tokens": 100,
+        "gen_tok_per_s": 20.98
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 5,
+        "kept": 5,
+        "missing": []
+      },
+      "seconds_total": 41.41,
+      "output": {
+        "corrected": "Dzień dobry Pani Wychowawczyni,\nmoja córka Sofia z klasy 5a ma problem z matematyką, ona nie rozumie ułamki. Czy możemy spotkać się po lekcjach w czwartek? Mnie pasuje po 16:00. Chcę brać udział w zebraniu rodziców, ale pracuję do 17. Z poważaniem, Halyna Tkachenko",
+        "changes": [
+          {
+            "from": "Czy możemy spotkać się po lekcjach w czwartek?",
+            "to": "Czy możemy spotkać się po lekcjach w czwartek? Mnie pasuje po 16:00.",
+            "type": "punctuation",
+            "why_uk": "Добавлено двокрапку для уточнення часу зустрічі після пропозиції зустрічі."
+          },
+          {
+            "from": "Chcę przyjmować udział w zebraniu rodziców ale pracuję do 17.",
+            "to": "Chcę brać udział w zebraniu rodziców, ale pracuję do 17.",
+            "type": "vocabulary",
+            "why_uk": "Калька з «приймати участь». Польською «brać udział», «wziąć udział w spotkaniu».",
+            "why_model_uk": "Замінено 'przyjmować udział' на 'brać udział', оскільки це калька з української, а в польській мові вживається 'brać udział'.",
+            "rule_id": "pl-ff-przyjmowac-udzial"
+          },
+          {
+            "from": "Chcę przyjmować udział w zebraniu rodziców ale pracuję do 17.",
+            "to": "Chcę brać udział w zebranні rodziców, ale pracuję do 17.",
+            "type": "word_order",
+            "why_uk": "Калька з «приймати участь». Польською «brać udział», «wziąć udział w spotkaniu».",
+            "why_model_uk": "Змінено порядок слів у реченні для природного звучання в польській мові.",
+            "rule_id": "pl-ff-przyjmowac-udzial"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Треба звертатися до вчителя з повагою, не вживати 'ty', використовувати 'Pani/Pan'."
+        },
+        "back_translation_uk": "День добрий, Пані Вчителю, моя донька Софія з 5-А класу має проблему з математикою, вона не розуміє дроби. Чи можемо зустрітися після уроків у четвер? Мені зручно після 16:00. Хочу взяти участь у зборі батьків, але я працюю до 17. З повагою, Галина Ткаченко"
+      }
+    },
+    {
+      "id": "school-pl-3",
+      "task": "school",
+      "target": "pl",
+      "rules": {
+        "hits": 3,
+        "ms": 1.2,
+        "ids": [
+          "pl-szanowny-pan-vocative",
+          "any-cyrillic-left",
+          "pl-ff-dowidka"
+        ],
+        "expected": 3,
+        "expected_found": 3
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 22.84,
+        "prompt_tokens": 182,
+        "gen_tokens": 448,
+        "gen_tok_per_s": 20.34,
+        "prompt_tok_per_s": 214.59,
+        "finish": "stop",
+        "errors": [],
+        "changes": 3,
+        "register": "ok",
+        "expect_register": null,
+        "reasons_from_rules": 2
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 3.57,
+        "gen_tokens": 67,
+        "gen_tok_per_s": 20.6
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 3,
+        "kept": 3,
+        "missing": []
+      },
+      "seconds_total": 26.41,
+      "output": {
+        "corrected": "Dzień dobry, Pani Dyrektor. Proszę o zwolnienie syna Maksyma z lekcji wf na 2 tygodnie, ponieważ złamał rękę. Dowód od lekarza dostarczę w poniedziałek. Z poważaniem, Viktor Hnatiuk.",
+        "changes": [
+          {
+            "from": "Szanowny Pan Dyrektor",
+            "to": "Dzień dobry, Pani Dyrektor",
+            "type": "register",
+            "why_uk": "У звертанні польська вимагає кличного відмінка: «Szanowny Panie», а не «Szanowny Pan». В українській теж кличний («Шановний пане»), тож форма знайома.",
+            "why_model_uk": "У звертанні до директора використовується форма 'Dzień dobry', а не 'Szanowny Pan Dyrektor', оскільки це більш природно в українській мові.",
+            "rule_id": "pl-szanowny-pan-vocative"
+          },
+          {
+            "from": "proszę o zwolnienie syna Maksyma z lekcji wf na 2 tygodnie, bo він зламав руку.",
+            "to": "Proszę o zwolnienie syna Maksyma z lekcji wf na 2 tygodnie, ponieważ złamał rękę.",
+            "type": "spelling",
+            "why_uk": "Україномовний текст містить помилки правопису, зокрема 'złamał' замість 'złamał' та 'rękę' замість 'rękę'. У польській мові використовуються правильні форми слів."
+          },
+          {
+            "from": "Dowidka od lekarza dam w poniedziałek.",
+            "to": "Dowód od lekarza dostarczę w poniedziałek.",
+            "type": "translation",
+            "why_uk": "«Довідка» польською «zaświadczenie» (наприклад, zaświadczenie o zatrudnieniu, zaświadczenie lekarskie).",
+            "why_model_uk": "Україномовний текст містить помилку перекладу, зокрема 'Dowidka' замість 'Dowód'. У польській мові використовується правильна форма слова 'Dowód'.",
+            "rule_id": "pl-ff-dowidka"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Лист написаний коректно, використовуються правильні форми звертання та структура."
+        },
+        "back_translation_uk": "Добрий день, Пані Директор. Прошу звільнити сина Максима з уроків фізкультури на 2 тижні, оскільки зламав руку. Доказ від лікаря надам у понеділок. З повагою, Віктор Гнатюк."
+      }
+    },
+    {
+      "id": "school-en-1",
+      "task": "school",
+      "target": "en",
+      "rules": {
+        "hits": 4,
+        "ms": 0.85,
+        "ids": [
+          "en-informal-greeting",
+          "en-he-dont",
+          "en-double-negative",
+          "en-explain-me"
+        ],
+        "expected": 4,
+        "expected_found": 4
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 35.53,
+        "prompt_tokens": 923,
+        "gen_tokens": 659,
+        "gen_tok_per_s": 20.84,
+        "prompt_tok_per_s": 233.61,
+        "finish": "stop",
+        "errors": [],
+        "changes": 5,
+        "register": "ok",
+        "expect_register": "too_informal",
+        "reasons_from_rules": 4
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 4.22,
+        "gen_tokens": 73,
+        "gen_tok_per_s": 18.86
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 3,
+        "kept": 3,
+        "missing": []
+      },
+      "seconds_total": 39.76,
+      "output": {
+        "corrected": "Dear Ms. Smith,\nMark, my son, does not understand the homework for English. He does not know anything about the present perfect. Can you explain to us at the meeting? He is in class 6c.\nThank you,\nTetiana",
+        "changes": [
+          {
+            "from": "Hi teacher, my son Mark don't understand homework for English, he don't know nothing about present perfect. Can you explain us on meeting?",
+            "to": "Dear Ms. Smith,\nMark, my son, does not understand the homework for English. He does not know anything about the present perfect. Can you explain to us at the meeting? He is in class 6c.",
+            "type": "translation",
+            "why_uk": "У діловому листі англійською пишуть «Dear Ms Smith,» або «Dear Sir or Madam,». «Hi/Hey» — для друзів і колег.",
+            "why_model_uk": "Використано правильні форми звернення та структуру ділового листа, замінено неформальні вирази на ділові.",
+            "rule_id": "en-informal-greeting"
+          },
+          {
+            "from": "he don't know nothing",
+            "to": "He does not know anything about the present perfect.",
+            "type": "vocabulary",
+            "why_uk": "У діловому листі англійською пишуть «Dear Ms Smith,» або «Dear Sir or Madam,». «Hi/Hey» — для друзів і колег.",
+            "why_model_uk": "Усунено подвійне заперечення, замінено на 'does not know anything about the present perfect'.",
+            "rule_id": "en-informal-greeting"
+          },
+          {
+            "from": "explain us",
+            "to": "explain to us",
+            "type": "word_order",
+            "why_uk": "Калька з «поясніть мені» (давальний відмінок). Англійською потрібне «to»: «explain to me».",
+            "why_model_uk": "Замінено кальку з української мови 'поясніть нам' на правильну форму 'explain to us'.",
+            "rule_id": "en-explain-me"
+          },
+          {
+            "from": "he don't understand homework for English",
+            "to": "Mark, my son, does not understand the homework for English.",
+            "type": "vocabulary",
+            "why_uk": "У третій особі однини англійською «doesn't»: «he doesn't», «my son doesn't».",
+            "why_model_uk": "Замінено неформальну фразу 'he don't understand' на ділову 'Mark, my son, does not understand'.",
+            "rule_id": "en-he-dont"
+          },
+          {
+            "from": "he is in class 6c",
+            "to": "He is in class 6c.",
+            "type": "punctuation",
+            "why_uk": "Додано крапку для завершення речення та уточнення інформації про клас."
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Лист написаний діловим стилем, використовуються правильні форми звернення та структура листа."
+        },
+        "back_translation_uk": "Шановна пані Сміт,\nМарк, мій син, не розуміє домашнє завдання з англійської. Він нічого не знає про Present Perfect. Чи можете ви пояснити нам на зустрічі? Він у 6-Б класі.\nДякую,\nТетяна."
+      }
+    },
+    {
+      "id": "school-en-2",
+      "task": "school",
+      "target": "en",
+      "rules": {
+        "hits": 1,
+        "ms": 1.86,
+        "ids": [
+          "any-cyrillic-left"
+        ],
+        "expected": 1,
+        "expected_found": 1
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": false,
+        "attempts": 2,
+        "content_problems": [],
+        "seconds": 28.91,
+        "prompt_tokens": 1,
+        "gen_tokens": 610,
+        "gen_tok_per_s": 21.19,
+        "prompt_tok_per_s": 20.48,
+        "finish": "stop",
+        "errors": [
+          [
+            "no JSON object found"
+          ]
+        ],
+        "changes": 3,
+        "register": "ok",
+        "expect_register": "ok",
+        "reasons_from_rules": 0
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 4.31,
+        "gen_tokens": 89,
+        "gen_tok_per_s": 22.18
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 5,
+        "kept": 5,
+        "missing": []
+      },
+      "seconds_total": 134.49,
+      "output": {
+        "corrected": "Dear Ms. Taylor, \n\nMy daughter Anna will be absent from 4 to 8 December because we must go to Ukraine for documents. Please tell me which tasks she must do. \nYours sincerely, \nMaryna Lysenko",
+        "changes": [
+          {
+            "from": "Dear Ms Taylor",
+            "to": "Dear Ms. Taylor",
+            "type": "register",
+            "why_uk": "Правильно використано звернення 'Ms. Taylor' замість 'Dear Ms Taylor', оскільки це формальне звернення до вчителя."
+          },
+          {
+            "from": "my daughter Anna will be absent from 4 to 8 December because we must go to Ukraine for documents.",
+            "to": "My daughter Anna will be absent from 4 to 8 December because we must go to Ukraine for documents.",
+            "type": "translation",
+            "why_uk": "Збережено зміст, але додано кращої структури речення для зрозумілості."
+          },
+          {
+            "from": "Dziękujemy za zrozumienie.",
+            "to": "Yours sincerely",
+            "type": "register",
+            "why_uk": "Правильно використано 'Yours sincerely' замість 'Dziękujemy za zrozumienie' для формального закриття листа."
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Добрий день, у листі використовуються правильні форми звернення та структура, але можна було б додати більше деталей про відсутність дитини."
+        },
+        "back_translation_uk": "Шановна пані Тейлор, ⁣\n\nМоя донька Анна буде відсутня з 4 по 8 грудня, оскільки нам потрібно поїхати в Україну за документами. Будь ласка, повідомте мені, які завдання вона повинна виконати.⁣\n\nЗ повагою,\nМаріна Лисенко."
+      }
+    },
+    {
+      "id": "job-pl-1",
+      "task": "job",
+      "target": "pl",
+      "rules": {
+        "hits": 3,
+        "ms": 4.67,
+        "ids": [
+          "pl-szukac-genitive",
+          "pl-mnie-lat",
+          "any-cyrillic-left"
+        ],
+        "expected": 3,
+        "expected_found": 3
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 38.43,
+        "prompt_tokens": 858,
+        "gen_tokens": 713,
+        "gen_tok_per_s": 20.49,
+        "prompt_tok_per_s": 233.12,
+        "finish": "stop",
+        "errors": [],
+        "changes": 6,
+        "register": "too_formal",
+        "expect_register": null,
+        "reasons_from_rules": 2
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 4.7,
+        "gen_tokens": 93,
+        "gen_tok_per_s": 21.96
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 6,
+        "kept": 6,
+        "missing": []
+      },
+      "seconds_total": 43.13,
+      "output": {
+        "corrected": "Szanowni Państwo,\nMam 41 lat i posiadam 15 lat doświadczenia w Kijowie jako księgowa. Znam program 1C, Excel oraz obecnie uczę się systemu Symfonia. Jestem osobą sumienną i odpowiedzialną. Mogę rozpocząć pracę od 1 grudnia. Z poważaniem, Natalia Bondar",
+        "changes": [
+          {
+            "from": "«szukam pracę»",
+            "to": "szukam pracy",
+            "type": "spelling",
+            "why_uk": "Дієслово «szukać» вимагає родового відмінка: «szukam pracy, szukam mieszkania», хоча українською «шукаю роботу» (знахідний).",
+            "why_model_uk": "Україно-польські фальшиві друзі: 'szukać' вимагає родового відмінка, тому правильно 'szukam pracy'.",
+            "rule_id": "pl-szukac-genitive"
+          },
+          {
+            "from": "«Mnie 41 lat»",
+            "to": "Mam 41 lat",
+            "type": "grammar",
+            "why_uk": "Калька з «мені 30 років». Польською вік «маю»: «mam 30 lat», «syn ma 8 lat».",
+            "why_model_uk": "Польська граматика: вік виражається формою 'маю': 'mam 41 lat', а не 'мій' ('Mnie 41 lat').",
+            "rule_id": "pl-mnie-lat"
+          },
+          {
+            "from": "«mam 15 lat doświadczenia»",
+            "to": "Mam 15 lat doświadczenia",
+            "type": "grammar",
+            "why_uk": "Польська граматика: використання родового відмінка для досвіду: 'Mam 15 lat doświadczenia'."
+          },
+          {
+            "from": "«Znam 1C, Excel i teraz uczę się Symfonia»",
+            "to": "Znam program 1C, Excel oraz obecnie uczę się systemu Symfonia",
+            "type": "vocabulary",
+            "why_uk": "Польська лексика: 'program' замість 'Znam' для назв програм."
+          },
+          {
+            "from": "«Jestem акуратна i odpowiedzialna»",
+            "to": "Jestem osobą sumienną i odpowiedzialną",
+            "type": "vocabulary",
+            "why_uk": "Польська лексика: 'osoba sumienna' замість 'акуратна' для виразності."
+          },
+          {
+            "from": "«Mogę zacząć od 1 grudnia»",
+            "to": "Mogę rozpocząć pracę od 1 grudnia",
+            "type": "grammar",
+            "why_uk": "Польська граматика: використання родового відмінка для дати: 'od 1 grudnia'."
+          }
+        ],
+        "register": {
+          "level": "too_formal",
+          "note_uk": "Початковий текст був занадто формальним, оскільки використовувалися звертання 'Szanowni Państwo' та 'Z poważaniem', що є типовим для ділових листів. Також було додано формальніші вирази, такі як 'Mam 41 lat i posiadam 15 lat doświadczenia...', що відповідає стандартам ділового листування в Польщі."
+        },
+        "back_translation_uk": "Шановні панове,  Мені 41 рік і маю 15-річний досвід у Києві як бухгалтерка. Знаю програму 1С, Excel та зараз навчаюся системи «Сімфонія». Я сумлінна та відповідальна особа. Можу розпочати роботу з 1 грудня. З повагою, Наталя Бондар"
+      }
+    },
+    {
+      "id": "job-pl-2",
+      "task": "job",
+      "target": "pl",
+      "rules": {
+        "hits": 2,
+        "ms": 1.12,
+        "ids": [
+          "pl-ff-robota",
+          "pl-ff-magazyn"
+        ],
+        "expected": 2,
+        "expected_found": 2
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 15.8,
+        "prompt_tokens": 167,
+        "gen_tokens": 327,
+        "gen_tok_per_s": 21.83,
+        "prompt_tok_per_s": 196.05,
+        "finish": "stop",
+        "errors": [],
+        "changes": 2,
+        "register": "ok",
+        "expect_register": "ok",
+        "reasons_from_rules": 2
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 4.57,
+        "gen_tokens": 95,
+        "gen_tok_per_s": 22.71
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 3,
+        "kept": 3,
+        "missing": []
+      },
+      "seconds_total": 20.37,
+      "output": {
+        "corrected": "Szanowni Państwo,\n\nOdpowiadam na ogłoszenie o pracę magazyniera w magazynie w Poznaniu. Mam prawo jazdy kat. B i uprawnienia na wózek widłowy. Pracowałem 6 lat w Charkowie jako kierowca. Mogę pracować na zmiany.\nZ poważaniem,\nOleh Kravets",
+        "changes": [
+          {
+            "from": "robota",
+            "to": "praca",
+            "type": "vocabulary",
+            "why_uk": "Українське «робота» в листі польською — «praca». «Robota» звучить розмовно, ніби «робітка».",
+            "why_model_uk": "Українізоване слово 'робота' має вживатися у формі 'praca', оскільки це офіційна мова Польщі.",
+            "rule_id": "pl-ff-robota"
+          },
+          {
+            "from": "magazynie",
+            "to": "sklepie",
+            "type": "translation",
+            "why_uk": "Українське «магазин» польською «sklep». «Magazyn» — це склад або журнал.",
+            "why_model_uk": "Українське слово 'магазин' має перекладатися як 'sklep', оскільки в Польщі 'магазин' означає 'магазин', а не 'склад'.",
+            "rule_id": "pl-ff-magazyn"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Повідомлення написане коректною мовою, але містить деякі мовні помилки. Наприклад, 'robota' замість 'praca', 'magazynie' замість 'sklepie'. Також відсутні артикли та вжито неправильні форми слів."
+        },
+        "back_translation_uk": "Шановні панове,  \n\nВідповідаю на оголошення про роботу складувача на складі в Познані. Маю водійські права категорії B та кваліфікацію на навантажувач. Працював 6 років у Харкові як водій. Можу працювати на зміни.  \n\nЗ повагою,  \nОлег Кравець"
+      }
+    },
+    {
+      "id": "job-en-1",
+      "task": "job",
+      "target": "en",
+      "rules": {
+        "hits": 4,
+        "ms": 0.5,
+        "ids": [
+          "en-informal-greeting",
+          "en-work-like",
+          "en-ff-accurate",
+          "en-waiting-for-answer"
+        ],
+        "expected": 4,
+        "expected_found": 4
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 43.81,
+        "prompt_tokens": 988,
+        "gen_tokens": 827,
+        "gen_tok_per_s": 20.88,
+        "prompt_tok_per_s": 233.51,
+        "finish": "stop",
+        "errors": [],
+        "changes": 5,
+        "register": "too_formal",
+        "expect_register": "too_informal",
+        "reasons_from_rules": 3
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 6.21,
+        "gen_tokens": 122,
+        "gen_tok_per_s": 21.83
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 6,
+        "kept": 6,
+        "missing": []
+      },
+      "seconds_total": 50.01,
+      "output": {
+        "corrected": "Dear Sir or Madam,\nI am writing regarding the vacancy for an accountant position in your company. I have 12 years of experience, having worked as a chief accountant in Kharkiv from 2014 to 2022. I am very accurate and responsible. I am proficient in 1C and Excel, and I am currently learning SAP. I look forward to hearing from you.\nZ poważaniem,\nAlexander Volkov",
+        "changes": [
+          {
+            "from": "Hello",
+            "to": "Dear Sir or Madam",
+            "type": "register",
+            "why_uk": "У діловому листі англійською пишуть «Dear Ms Smith,» або «Dear Sir or Madam,». «Hi/Hey» — для друзів і колег.",
+            "why_model_uk": "У діловому листі англійською слід використовувати ввічливе звернення, а не розмовні 'Hello' або 'Hi'.",
+            "rule_id": "en-informal-greeting"
+          },
+          {
+            "from": "I am write about vacancy of accountant in your company.",
+            "to": "I am writing regarding the vacancy for an accountant position in your company.",
+            "type": "vocabulary",
+            "why_uk": "Правильно: 'I am writing' замість 'I am write' (граматика), 'regarding' замість 'about' (стилістика)."
+          },
+          {
+            "from": "I have 12 years experience, I worked like a chief accountant in Kharkiv since 2014 to 2022.",
+            "to": "I have 12 years of experience, having worked as a chief accountant in Kharkiv from 2014 to 2022.",
+            "type": "grammar",
+            "why_uk": "Українське «працюю як / працювала вчителькою» англійською «work as a teacher». «Work like a» означає «працювати подібно до».",
+            "why_model_uk": "Правильно: 'having worked' замість 'I have' (граматика), 'from 2014 to 2022' замість 'since 2014 to 2022' (стилістика).",
+            "rule_id": "en-work-like"
+          },
+          {
+            "from": "I know 1C and Excel, now I learn SAP.",
+            "to": "I am proficient in 1C and Excel, and I am currently learning SAP.",
+            "type": "vocabulary",
+            "why_uk": "Правильно: 'proficient in' замість 'know' (граматика), 'currently' замість 'now' (стилістика)."
+          },
+          {
+            "from": "Waiting for your answer.",
+            "to": "I look forward to hearing from you.",
+            "type": "register",
+            "why_uk": "Калька з «чекаю на вашу відповідь». Стандартна англійська фраза: «I look forward to hearing from you.»",
+            "why_model_uk": "Правильно: 'look forward to' замість 'waiting for' (граматика), 'hearing from' замість 'answer' (стилістика).",
+            "rule_id": "en-waiting-for-answer"
+          }
+        ],
+        "register": {
+          "level": "too_formal",
+          "note_uk": "Початковий текст містить надто формальний стиль звернення. У ділових листах англійською слід використовувати 'Dear Sir or Madam' або 'Dear [Ім'я]', якщо відомо ім'я. В українській мові також вживаються 'Шановні панове/пані' або 'Шановні [Ім'я]'."
+        },
+        "back_translation_uk": "Шановний пане або пані,\nЯ звертаюся до вас щодо вакансії на посаду бухгалтера у вашій компанії. Маю 12-річний досвід роботи, зокрема як головний бухгалтер у Харкові з 2014 по 2022 рік. Я дуже точний і відповідальний. Володію програмами 1С та Excel, а також зараз вивчаю SAP. Сподіваюся на вашу відповідь.\nЗ повагою,\nОлександр Волков"
+      }
+    },
+    {
+      "id": "job-en-2",
+      "task": "job",
+      "target": "en",
+      "rules": {
+        "hits": 5,
+        "ms": 2.31,
+        "ids": [
+          "en-have-years",
+          "en-article-missing-a-job",
+          "en-ff-speciality",
+          "en-married-with",
+          "en-since-duration"
+        ],
+        "expected": 5,
+        "expected_found": 5
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 26.99,
+        "prompt_tokens": 328,
+        "gen_tokens": 549,
+        "gen_tok_per_s": 21.58,
+        "prompt_tok_per_s": 211.98,
+        "finish": "stop",
+        "errors": [],
+        "changes": 5,
+        "register": "ok",
+        "expect_register": "ok",
+        "reasons_from_rules": 5
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 5.89,
+        "gen_tokens": 120,
+        "gen_tok_per_s": 23.12
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 5,
+        "kept": 5,
+        "missing": []
+      },
+      "seconds_total": 32.88,
+      "output": {
+        "corrected": "Dear Sir or Madam, I apply for the position of nurse in your clinic. I am 34 years old, I am a nurse with 10 years of experience at Lviv City Clinical Hospital. My specialty is surgical nursing. I am married to an engineer and we have lived in Wrocław for three years. Yours faithfully, Kateryna Savchuk.",
+        "changes": [
+          {
+            "from": "I have 34 years",
+            "to": "I am 34 years old",
+            "type": "translation",
+            "why_uk": "Вік англійською через «to be»: «I am 34 years old», «my son is 8».",
+            "why_model_uk": "Вік англійською через 'to be': 'I am 34 years old', 'my son is 8'.",
+            "rule_id": "en-have-years"
+          },
+          {
+            "from": "I am nurse",
+            "to": "I am a nurse",
+            "type": "vocabulary",
+            "why_uk": "Українською «я вчителька» без артикля, англійською професія потребує «a/an»: «I am a teacher», «I worked as an accountant».",
+            "why_model_uk": "Професія потребує 'a/an': 'I am a teacher', 'I worked as an accountant'.",
+            "rule_id": "en-article-missing-a-job"
+          },
+          {
+            "from": "My speciality",
+            "to": "My specialty is surgical nursing",
+            "type": "translation",
+            "why_uk": "«Спеціальність» в CV англійською зазвичай «degree in ...», «field of study» або «profession». «Speciality» звучить як «фірмова страва».",
+            "why_model_uk": "«Спеціальність» в CV англійською зазвичай 'degree in ...', 'field of study' або 'profession'. 'Speciality' звучить як 'фірмова страва'.",
+            "rule_id": "en-ff-speciality"
+          },
+          {
+            "from": "married with",
+            "to": "married to",
+            "type": "grammar",
+            "why_uk": "Калька з «одружений з». Англійською «married to».",
+            "why_model_uk": "Калька з 'одружений з'. Англійською 'married to'.",
+            "rule_id": "en-married-with"
+          },
+          {
+            "from": "since three years",
+            "to": "for three years",
+            "type": "punctuation",
+            "why_uk": "Українське «вже три роки / з трьох років» англійською «for three years». «Since» тільки з моментом початку: «since 2022», «since March».",
+            "why_model_uk": "Українське 'вже три роки / з трьох років' англійською 'for three years'. 'Since' тільки з моментом початку: 'since 2022', 'since March'.",
+            "rule_id": "en-since-duration"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Добрий рівень формальності. Відсутні прямі звернення до особи, але загалом відповідає професійному листуванню. Потрібно додати конкретну адресу або назву клініки, якщо відомо."
+        },
+        "back_translation_uk": "Шановний пане або пані, я звертаюся на посаду медсестри у вашій клініці. Мені 34 роки, я медсестра з 10-річним досвідом роботи в міській клінічній лікарні Львова. Моя спеціальність — хірургічна медсестринська допомога. Я одружена з інженером, і ми проживаємо у Вроцлаві три роки. З повагою, Катерина Савчук."
+      }
+    },
+    {
+      "id": "job-en-3",
+      "task": "job",
+      "target": "en",
+      "rules": {
+        "hits": 6,
+        "ms": 2.72,
+        "ids": [
+          "en-in-internet",
+          "any-cyrillic-left",
+          "en-much-countable",
+          "en-ff-according-to-me"
+        ],
+        "expected": 4,
+        "expected_found": 4
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 18.87,
+        "prompt_tokens": 202,
+        "gen_tokens": 403,
+        "gen_tok_per_s": 22.53,
+        "prompt_tok_per_s": 203.06,
+        "finish": "stop",
+        "errors": [],
+        "changes": 3,
+        "register": "too_formal",
+        "expect_register": null,
+        "reasons_from_rules": 3
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 3.64,
+        "gen_tokens": 71,
+        "gen_tok_per_s": 22.83
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 5,
+        "kept": 4,
+        "missing": [
+          "Denys Romanenko"
+        ]
+      },
+      "seconds_total": 22.51,
+      "output": {
+        "corrected": "Good day! I saw your offer for a programmer on the internet. I have worked as a Java developer for 5 years in Dnipro. I have completed many projects with Spring and PostgreSQL. In my opinion, I am good at teamwork.",
+        "changes": [
+          {
+            "from": "in internet",
+            "to": "on the internet",
+            "type": "translation",
+            "why_uk": "Калька з «в інтернеті». Англійською «on the internet».",
+            "why_model_uk": "«in internet» → «on the internet»: Калька з «в інтернеті». Англійською «on the internet».",
+            "rule_id": "en-in-internet"
+          },
+          {
+            "from": "much projects",
+            "to": "many projects",
+            "type": "vocabulary",
+            "why_uk": "Українське «багато» має два англійські відповідники: «many» для злічуваних (many documents), «much» для незлічуваних (much time).",
+            "why_model_uk": "Українське «багато» має два англійські відповідники: «many» для злічуваних (many documents), «much» для незлічуваних (much time).",
+            "rule_id": "en-much-countable"
+          },
+          {
+            "from": "According to me",
+            "to": "In my opinion",
+            "type": "register",
+            "why_uk": "Калька з «на мою думку / згідно зі мною». Англійською «in my opinion» або «I think».",
+            "why_model_uk": "«According to me» → «In my opinion»: Калька з «на мою думку / згідно зі мною». Англійською «in my opinion» або «I think».",
+            "rule_id": "en-ff-according-to-me"
+          }
+        ],
+        "register": {
+          "level": "too_formal",
+          "note_uk": "Добрий день! Я побачив вашу пропозицію на роботу програміста в інтернеті. Я працював розробником Java 5 років у Дніпрі. Я виконав багато проектів із Spring та PostgreSQL. На мою думку, я добре вмію працювати в команді."
+        },
+        "back_translation_uk": "Добрий день! Я побачив вашу пропозицію для програміста в Інтернеті. Я працював Java-розробником 5 років у Дніпрі. Я завершив багато проектів із Spring і PostgreSQL. На мою думку, я добре працюю в команді."
+      }
+    },
+    {
+      "id": "office-pl-1",
+      "task": "office",
+      "target": "pl",
+      "rules": {
+        "hits": 5,
+        "ms": 3.77,
+        "ids": [
+          "pl-szanowny-pan-vocative",
+          "pl-diacritics",
+          "pl-ff-oformic",
+          "pl-ff-zajawa",
+          "pl-do-widzenia-closing"
+        ],
+        "expected": 5,
+        "expected_found": 5
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 31.65,
+        "prompt_tokens": 1011,
+        "gen_tokens": 584,
+        "gen_tok_per_s": 21.37,
+        "prompt_tok_per_s": 232.33,
+        "finish": "stop",
+        "errors": [],
+        "changes": 5,
+        "register": "ok",
+        "expect_register": null,
+        "reasons_from_rules": 5
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 6.02,
+        "gen_tokens": 98,
+        "gen_tok_per_s": 18.52
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 4,
+        "kept": 3,
+        "missing": [
+          "Natalia Bondar"
+        ]
+      },
+      "seconds_total": 37.68,
+      "output": {
+        "corrected": "Szanowny Panie, Proszę o wydanie zaświadczenia o niekaralności dla załatwienia sprawy. Mój numer PESEL: 85031712345, sprawa nr WSO-II.6151.1234.2025. Już byłam w urzędzie 20.10, ale mojej zajawy w systemie nie było.",
+        "changes": [
+          {
+            "from": "«Szanowny Pan»",
+            "to": "Szanowny Panie",
+            "type": "register",
+            "why_uk": "У звертанні польська вимагає кличного відмінка: «Szanowny Panie», а не «Szanowny Pan». В українській теж кличний («Шановний пане»), тож форма знайома.",
+            "why_model_uk": "У звертанні польська вимагає кличного відмінка: 'Szanowny Panie', а не 'Szanowny Pan'.",
+            "rule_id": "pl-szanowny-pan-vocative"
+          },
+          {
+            "from": "«prosze»",
+            "to": "Proszę",
+            "type": "spelling",
+            "why_uk": "Без польських літер (ą, ę, ś, ż...) текст виглядає недбало, а в офіційному листі це помітно. Наприклад «proszę», «dziękuję», «się».",
+            "why_model_uk": "Без польських літер (ą, ę, ś, ż...) текст виглядає недбало, а в офіційному листі це помітно. Наприклад 'proszę', 'dziękuję', 'się'.",
+            "rule_id": "pl-diacritics"
+          },
+          {
+            "from": "«oformienia»",
+            "to": "załatwienia",
+            "type": "vocabulary",
+            "why_uk": "Калька з «оформити». Польською: «złożyć wniosek», «załatwić sprawę», «wypełnić formularz», «zarejestrować».",
+            "why_model_uk": "Калька з 'оформити'. Польською: 'złożyć wniosek', 'załatwić sprawę', 'wypełnić formularz', 'zarejestrować'.",
+            "rule_id": "pl-ff-oformic"
+          },
+          {
+            "from": "«zajawy»",
+            "to": "wniosek",
+            "type": "vocabulary",
+            "why_uk": "«Заява» польською «wniosek» (до установи) або «podanie» (наприклад, до школи чи роботодавця). «Zjawa» польською означає привид.",
+            "why_model_uk": "«Zjawa» польською означає привид. 'Zajaw' — це заява, а не привид.",
+            "rule_id": "pl-ff-zajawa"
+          },
+          {
+            "from": "«Do widzenia»",
+            "to": "Z poważaniem",
+            "type": "register",
+            "why_uk": "«Do widzenia» кажуть усно. У листі до установи пишуть «Z poważaniem», до вчителя чи орендодавця також «Pozdrawiam serdecznie».",
+            "why_model_uk": "«Do widzenia» кажуть усно. У листі до установи пишуть 'Z poważaniem', до вчителя чи орендодавця також 'Pozdrawiam serdecznie'.",
+            "rule_id": "pl-do-widzenia-closing"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Українці часто пишуть 'Prosze' замість 'Proszę', 'zajawy' замість 'wniosek', 'Do widzenia' замість 'Z poważaniem'."
+        },
+        "back_translation_uk": "Шановний пане, Прошу видати довідку про несудимість для вирішення справи. Мій номер PESEL: 85031712345, справа № WSO-II.6151.1234.2025. Вже була в офісі 20.10, але моєї заявки в системі не було."
+      }
+    },
+    {
+      "id": "office-pl-2",
+      "task": "office",
+      "target": "pl",
+      "rules": {
+        "hits": 1,
+        "ms": 2.54,
+        "ids": [
+          "any-cyrillic-left"
+        ],
+        "expected": 1,
+        "expected_found": 1
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 39.49,
+        "prompt_tokens": 104,
+        "gen_tokens": 848,
+        "gen_tok_per_s": 21.84,
+        "prompt_tok_per_s": 181.35,
+        "finish": "stop",
+        "errors": [],
+        "changes": 6,
+        "register": "ok",
+        "expect_register": null,
+        "reasons_from_rules": 0
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 8.2,
+        "gen_tokens": 160,
+        "gen_tok_per_s": 22.25
+      },
+      "new_numbers": [
+        "1",
+        "1234567890"
+      ],
+      "facts": {
+        "total": 4,
+        "kept": 3,
+        "missing": [
+          "Olha Marchenko"
+        ]
+      },
+      "seconds_total": 47.7,
+      "output": {
+        "corrected": "Szanowni Państwo,\n\nZ dniem 1 września 2026 r. otrzymałam pismo z ZUS o konieczności zwrotu świadczenia 800+ za sierpień w wysokości 1250 zł. W piśmie wskazano, że świadczenie zostało przyznane na podstawie mojego numeru PESEL UKR 1234567890, ale moja córka cały czas mieszkała ze mną w Polsce. Proszę o wyjaśnienie, dlaczego doszło do takiej decyzji i co mam zrobić w tej sprawie. W piśmie podano również numer sprawy 0412/2026/ZUS.",
+        "changes": [
+          {
+            "from": "Dzień dobry",
+            "to": "Szanowni Państwo",
+            "type": "register",
+            "why_uk": "Українець, який живе в Польщі, повинен звертатися до державних установ у формі 'Szanowni Państwo' або 'Dzień dobry', а не 'Cześć' або 'Ty'. Також важливо правильно використовувати офіційні терміни та структуру тексту."
+          },
+          {
+            "from": "w ZUS dostałam pismo że muszę zwrócić 1250 zł świadczenia 800 plus za sierpień.",
+            "to": "Z dniem 1 września 2026 r. otrzymałam pismo z ZUS o konieczności zwrotu świadczenia 800+ za sierpień w wysokości 1250 zł.",
+            "type": "grammar",
+            "why_uk": "Українець, який живе в Польщі, повинен правильно використовувати граматику польської мови, зокрема правильне вживання часів та форм слів."
+          },
+          {
+            "from": "Ale моя дитина весь czas жила зі мною в Польщі.",
+            "to": "że moja córka cały czas mieszkała ze mną w Polsce.",
+            "type": "vocabulary",
+            "why_uk": "Українець, який живе в Польщі, повинен правильно вживати слова в польській мові, зокрема правильно використовувати синоніми та граматичні форми."
+          },
+          {
+            "from": "Proszę wyjaśnić dlaczego i co mam zrobić.",
+            "to": "Proszę o wyjaśnienie, dlaczego doszło do takiej decyzji i co mam zrobić w tej sprawie.",
+            "type": "vocabulary",
+            "why_uk": "Українець, який живе в Польщі, повинен правильно вживати слова в польській мові, зокрема правильно використовувати синоніми та граматичні форми."
+          },
+          {
+            "from": "Numer sprawy 0412/2026/ZUS.",
+            "to": "w piśmie podano również numer sprawy 0412/2026/ZUS.",
+            "type": "punctuation",
+            "why_uk": "Українець, який живе в Польщі, повинен правильно використовувати розділові знаки, зокрема правильно ставити крапки та коми."
+          },
+          {
+            "from": "Olha Marchenko",
+            "to": "",
+            "type": "word_order",
+            "why_uk": "Українець, який живе в Польщі, повинен правильно використовувати порядок слів у реченні, зокрема правильно ставити закінчення слів."
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Українець, який живе в Польщі, повинен звертатися до державних установ у формі 'Szanowni Państwo' або 'Dzień dobry', а не 'Cześć' або 'Ty'. Також важливо правильно використовувати офіційні терміни та структуру тексту."
+        },
+        "back_translation_uk": "Шановні пані та панове,\n\nЗ дня 1 вересня 2026 р. я отримала листа від ZUS про необхідність повернення допомоги 800+ за серпень на суму 1250 зл. У листі вказано, що допомога була надана на основі мого номера PESEL UKR 1234567890, але моя дочка весь час мешкала зі мною в Польщі. Прошу пояснити, чому було прийнято таке рішення та що мені слід зробити у цій справі. У листі також вказано номер справи 0412/2026/ZUS."
+      }
+    },
+    {
+      "id": "office-pl-3",
+      "task": "office",
+      "target": "pl",
+      "rules": {
+        "hits": 1,
+        "ms": 3.6,
+        "ids": [
+          "pl-ff-zajawa"
+        ],
+        "expected": 1,
+        "expected_found": 1
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": false,
+        "attempts": 2,
+        "content_problems": [],
+        "seconds": 27.26,
+        "prompt_tokens": 1,
+        "gen_tokens": 595,
+        "gen_tok_per_s": 21.96,
+        "prompt_tok_per_s": 20.47,
+        "finish": "stop",
+        "errors": [
+          [
+            "JSON parse failed: Expected ',' or ']' after array element in JSON at position 1155 (line 25 column 6)"
+          ]
+        ],
+        "changes": 5,
+        "register": "ok",
+        "expect_register": "ok",
+        "reasons_from_rules": 4
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 3.9,
+        "gen_tokens": 76,
+        "gen_tok_per_s": 23.1
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 3,
+        "kept": 3,
+        "missing": []
+      },
+      "seconds_total": 128.08,
+      "output": {
+        "corrected": "Szanowni Państwo,\njestem zarejestrowany w PUP jako bezrobotny od 2 września. Chcę zapisać się na kurs języka polskiego. Gdzie mam złożyć wniosek i jakie dokumenty są potrzebne? Mogę przyjść w każdy dzień oprócz środy.\nZ poważaniem,\nAndrii Polishchuk",
+        "changes": [
+          {
+            "from": "«zajawę»",
+            "to": "wniosek",
+            "type": "translation",
+            "why_uk": "«Заява» польською «wniosek» (до установи) або «podanie» (наприклад, до школи чи роботодавця). «Zjawa» польською означає привид.",
+            "why_model_uk": "«заява» українською означає заяву, а не привид. Потрібно використовувати правильну форму слова 'wniosek'.",
+            "rule_id": "pl-ff-zajawa"
+          },
+          {
+            "from": "«podanie»",
+            "to": "kurs języka polskiego",
+            "type": "translation",
+            "why_uk": "«підручення» означає навчання, а не подання. Потрібно використовувати правильну форму слова 'kurs języka polskiego'."
+          },
+          {
+            "from": "«zajawę»",
+            "to": "Gdzie mam złożyć zajawę",
+            "type": "punctuation",
+            "why_uk": "«Заява» польською «wniosek» (до установи) або «podanie» (наприклад, до школи чи роботодавця). «Zjawa» польською означає привид.",
+            "why_model_uk": "«заява» — це неформальне слово. Потрібно використовувати правильну форму слова 'wniosek'.",
+            "rule_id": "pl-ff-zajawa"
+          },
+          {
+            "from": "«zajawę»",
+            "to": "Gdzie mam złożyć wniosek",
+            "type": "punctuation",
+            "why_uk": "«Заява» польською «wniosek» (до установи) або «podanie» (наприклад, до школи чи роботодавця). «Zjawa» польською означає привид.",
+            "why_model_uk": "«заява» — це неформальне слово. Потрібно використовувати правильну форму слова 'wniosek'.",
+            "rule_id": "pl-ff-zajawa"
+          },
+          {
+            "from": "«zajawę»",
+            "to": "Mogę przyjść w każdy dzień oprócz środy",
+            "type": "punctuation",
+            "why_uk": "«Заява» польською «wniosek» (до установи) або «podanie» (наприклад, до школи чи роботодавця). «Zjawa» польською означає привид.",
+            "why_model_uk": "«заява» — це неформальне слово. Потрібно використовувати правильну форму слова 'wniosek'.",
+            "rule_id": "pl-ff-zajawa"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Українська мова використовується в листуванні, але зміст зрозумілий. Потрібно виправити граматику та стиль."
+        },
+        "back_translation_uk": "Шановні панове, я зареєстрований у PUP як безробітний з 2 вересня. Хочу записатися на курс польської мови. Де мені подати заяву та які документи потрібні? Можу прийти кожен день, крім середи. З повагою, Андрій Polishchuk."
+      }
+    },
+    {
+      "id": "office-pl-4",
+      "task": "office",
+      "target": "pl",
+      "rules": {
+        "hits": 1,
+        "ms": 2.41,
+        "ids": [
+          "any-cyrillic-left"
+        ],
+        "expected": 1,
+        "expected_found": 1
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": false,
+        "attempts": 2,
+        "content_problems": [],
+        "seconds": 37.17,
+        "prompt_tokens": 1,
+        "gen_tokens": 783,
+        "gen_tok_per_s": 21.19,
+        "prompt_tok_per_s": 21.13,
+        "finish": "stop",
+        "errors": [
+          [
+            "no JSON object found"
+          ]
+        ],
+        "changes": 4,
+        "register": "ok",
+        "expect_register": "ok",
+        "reasons_from_rules": 0
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 5.21,
+        "gen_tokens": 116,
+        "gen_tok_per_s": 23.15
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 4,
+        "kept": 4,
+        "missing": []
+      },
+      "seconds_total": 141.55,
+      "output": {
+        "corrected": "Szanowni Państwo,\n\nMam pytanie dotyczące karty pobytu. Złożyłam wniosek 14 marca 2026 r., numer sprawy WSC-II-S.6151.98765.2026. Do tej pory nie ma decyzji, a moja karta UKR kończy się 4 grudnia. Czy mogę wyjeżdżać za granicę, póki czekam? Dziękuję za odpowiedź.\nYuliia Zinchenko",
+        "changes": [
+          {
+            "from": "Dzień dobry",
+            "to": "Szanowni Państwo",
+            "type": "register",
+            "why_uk": "Українець повинен звертатися до офіційних установ з використанням ввічливих формул 'Szanowni Państwo' замість неформальних 'Dzień dobry'."
+          },
+          {
+            "from": "mam pytanie o kartę pobytu.",
+            "to": "Mam pytanie dotyczące karty pobytu.",
+            "type": "vocabulary",
+            "why_uk": "Потрібно уточнити формулювання, щоб було зрозуміліше, про яку саме карту йдеться — 'karty pobytu' замість загального 'о карті перебування'."
+          },
+          {
+            "from": "Złożyłam wniosek 14 marca 2026, numer sprawy WSC-II-S.6151.98765.2026.",
+            "to": "Złożyłam wniosek 14 marca 2026 r., numer sprawy WSC-II-S.6151.98765.2026.",
+            "type": "punctuation",
+            "why_uk": "Українець має дотримуватися правил пунктуації, зокрема ставити крапки після дат і номерів справ."
+          },
+          {
+            "from": "Do teraz nie ma decyzji a moja karta UKR kończy się 4 grudnia.",
+            "to": "Do tej pory nie ma decyzji, a moja karta UKR kończy się 4 grudnia.",
+            "type": "grammar",
+            "why_uk": "Потрібно правильно використовувати час дієслова 'kończ się' у формі 'kończ się' замість 'a moja karta UKR kończy się'."
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Українка Юлія Зінченко звертається до польського офісу з питанням щодо статусу карти перебування. Потрібно звернути увагу на правильність вживання офіційного стилю, дат, назв документів та коректне вживання мови."
+        },
+        "back_translation_uk": "Шановні Панове,\n\nУ мене є запитання щодо карти перебування. Я подала заяву 14 березня 2026 року, номер справи WSC-II-S.6151.98765.2026. До цього часу немає рішення, а моя карта UKR закінчується 4 грудня. Чи можу я виїжджати за кордон, поки чекаю? Дякую за відповідь.\nYuliia Zinchenko"
+      }
+    },
+    {
+      "id": "office-en-1",
+      "task": "office",
+      "target": "en",
+      "rules": {
+        "hits": 3,
+        "ms": 0.79,
+        "ids": [
+          "en-informal-greeting",
+          "en-article-missing-the-place",
+          "en-in-internet"
+        ],
+        "expected": 3,
+        "expected_found": 3
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 22.48,
+        "prompt_tokens": 879,
+        "gen_tokens": 413,
+        "gen_tok_per_s": 22.08,
+        "prompt_tok_per_s": 231.47,
+        "finish": "stop",
+        "errors": [],
+        "changes": 3,
+        "register": "ok",
+        "expect_register": null,
+        "reasons_from_rules": 3
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 6.12,
+        "gen_tokens": 103,
+        "gen_tok_per_s": 22.34
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 3,
+        "kept": 3,
+        "missing": []
+      },
+      "seconds_total": 28.6,
+      "output": {
+        "corrected": "Dear Sir or Madam,\n\nI need a certificate about my income for 2025 for the bank. I went to the office on Monday but it was closed. Can I order it on the internet? My tax number NIP 5213456789.\nThank you,\nRoman Bilyk",
+        "changes": [
+          {
+            "from": "Hello",
+            "to": "Dear Sir or Madam,",
+            "type": "register",
+            "why_uk": "У діловому листі англійською пишуть «Dear Ms Smith,» або «Dear Sir or Madam,». «Hi/Hey» — для друзів і колег.",
+            "why_model_uk": "У діловому листі англійською пишуть 'Dear Ms Smith,' або 'Dear Sir or Madam,' для звернення до офіційних осіб. Використовують формальніші форми звернення, ніж 'Cześć' або 'Ty.'",
+            "rule_id": "en-informal-greeting"
+          },
+          {
+            "from": "went to office",
+            "to": "went to the office",
+            "type": "spelling",
+            "why_uk": "В українській немає артиклів, тому їх часто пропускають. Перед конкретним місцем потрібне «the»: «go to the bank», «the office».",
+            "why_model_uk": "В українській немає артиклів, тому їх часто пропускають. Перед конкретним місцем потрібне 'the': 'go to the bank', 'the office'.",
+            "rule_id": "en-article-missing-the-place"
+          },
+          {
+            "from": "in internet",
+            "to": "on the internet",
+            "type": "translation",
+            "why_uk": "Калька з «в інтернеті». Англійською «on the internet».",
+            "why_model_uk": "Калька з 'в інтернеті'. Англійською 'on the internet'.",
+            "rule_id": "en-in-internet"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Українською в ділових листах використовують 'Szanowni Państwo,' або 'Dear Sir or Madam,' для звернення до офіційних осіб. Використовують формальніші форми звернення, ніж 'Cześć' або 'Ty'."
+        },
+        "back_translation_uk": "Шановний пане або пані,\n\nЯ потребую сертифікат про моє доходи за 2025 рік для банку. Я був у офісі в понеділок, але він був закритий. Чи можу я замовити його в Інтернеті? Мій податковий номер NIP 5213456789.\n\nДякую,\n\nРоман Білик"
+      }
+    }
+  ]
+}

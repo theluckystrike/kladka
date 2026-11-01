@@ -1,0 +1,513 @@
+{
+  "generated_at": "2026-11-01T13:31:22.306Z",
+  "note": "Real measurements from one run on the machine below. Test drafts are synthetic (eval/drafts.json). Short run (first 5 drafts) to measure memory with a 4096-token context.",
+  "machine": {
+    "platform": "darwin 25.6.0",
+    "cpu": "Apple M3 Pro",
+    "cores": 11,
+    "ram_gb": 36
+  },
+  "llama_server": {
+    "version": "version: 0.8.0 (build 11960, commit 8642541b2)",
+    "url": "http://127.0.0.1:8080"
+  },
+  "model": "same model, llama-server -c 4096 -ngl 99 --no-jinja",
+  "settings": {
+    "temperature": 0.2,
+    "top_p": 0.9,
+    "seed": 42,
+    "constrained_json": true,
+    "back_translation": true
+  },
+  "summary": {
+    "drafts": 5,
+    "coach_json_valid_first_try": "5/5",
+    "coach_json_valid_after_fallback": "5/5",
+    "coach_content_checks_clean": "5/5",
+    "back_json_valid_first_try": "5/5",
+    "drafts_with_invented_numbers": "0/5",
+    "changes_total": 22,
+    "changes_with_rule_reason": 16,
+    "facts_preserved": "14/17",
+    "seconds_per_draft_median": 37.57,
+    "seconds_per_draft_mean": 37.75,
+    "seconds_per_draft_p90": 45.39,
+    "seconds_per_draft_max": 45.39,
+    "gen_tokens_per_second_mean": 21.76,
+    "gen_tokens_per_second_min": 20.97,
+    "prompt_tokens_per_second_mean": 215.55,
+    "llama_server_rss_mb_idle": 6055,
+    "llama_server_rss_mb_peak": 6745,
+    "node_rss_mb_peak": 60,
+    "rule_hits_total": 20,
+    "rule_expected_found": "20/20",
+    "rules_ms_max": 93.24,
+    "changes_located_inline": "20/22",
+    "register_model_agrees_with_label": "2/3",
+    "register_model_caught_informal": "0/1",
+    "register_combined_agrees_with_label": "3/3",
+    "register_combined_caught_informal": "1/1"
+  },
+  "drafts": [
+    {
+      "id": "landlord-pl-1",
+      "task": "landlord",
+      "target": "pl",
+      "rules": {
+        "hits": 4,
+        "ms": 71.78,
+        "ids": [
+          "pl-ff-kwatera",
+          "pl-po-telefonie",
+          "pl-u-mnie-jest",
+          "pl-czekam-na-odpowiedz"
+        ],
+        "expected": 4,
+        "expected_found": 4
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 32.09,
+        "prompt_tokens": 821,
+        "gen_tokens": 600,
+        "gen_tok_per_s": 20.97,
+        "prompt_tok_per_s": 233.06,
+        "finish": "stop",
+        "errors": [],
+        "changes": 5,
+        "register": "ok",
+        "expect_register": null,
+        "reasons_from_rules": 4
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 5.03,
+        "gen_tokens": 97,
+        "gen_tok_per_s": 22.36
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 4,
+        "kept": 4,
+        "missing": []
+      },
+      "seconds_total": 37.13,
+      "output": {
+        "corrected": "Dzień dobry Panie Nowaku,\n\nU mnie w mieszkaniu nie działa ogrzewanie od 3 listopada. Dzwoniłam przez telefon dwa razy, ale nikt nie odpowiedział. Proszę szybko to naprawić, ponieważ w mieszkaniu jest 14 stopni, a u mnie jest mała dziecko.\n\nCzekam na odpowiedź,\nOksana Kovalenko",
+        "changes": [
+          {
+            "from": "kwatera",
+            "to": "w mieszkaniu",
+            "type": "translation",
+            "why_uk": "Хибний друг перекладача: українське «квартира» польською «mieszkanie». «Kwatera» означає тимчасове житло або військову квартиру.",
+            "why_model_uk": "Українське «квартира» перекладається як «mieszkanie» польською мовою.",
+            "rule_id": "pl-ff-kwatera"
+          },
+          {
+            "from": "po telefonu",
+            "to": "przez telefon",
+            "type": "translation",
+            "why_uk": "Калька з «по телефону». Польською «rozmawiać przez telefon», «kontakt telefoniczny».",
+            "why_model_uk": "Фраза «по телефону» перекладається як «przez telefon» польською мовою.",
+            "rule_id": "pl-po-telefonie"
+          },
+          {
+            "from": "u mnie jest",
+            "to": "u mnie jest mała dziecko",
+            "type": "translation",
+            "why_uk": "Калька з «у мене є». Польською природніше «mam dwoje dzieci», «mamy problem z ogrzewaniem».",
+            "why_model_uk": "Фраза «у мене є» перекладається як «u mnie jest» українською мовою, але правильніше «mam dwoje dzieci» польською мовою.",
+            "rule_id": "pl-u-mnie-jest"
+          },
+          {
+            "from": "czekam odpowiedzi",
+            "to": "czekam na odpowiedź",
+            "type": "register",
+            "why_uk": "Українською «чекаю відповіді» (родовий), а польською потрібен прийменник: «czekam na odpowiedź», «czekam na Pana odpowiedź».",
+            "why_model_uk": "Українське «чекаю відповіді» (родовий) перекладається як «czekam na odpowiedź» польською мовою, використовуючи прийменник.",
+            "rule_id": "pl-czekam-na-odpowiedz"
+          },
+          {
+            "from": "Dzwoniłam",
+            "to": "Dzwoniłam przez telefon",
+            "type": "word_order",
+            "why_uk": "Українське «дзвонила» перекладається як «Dzwoniłam» польською мовою, але правильніше «Dzwoniłam przez telefon» з додаванням прийменника."
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Лист написаний українською мовою, але з використанням правильних польських слів і граматики."
+        },
+        "back_translation_uk": "Добрий день, пане Новаку,\n\nУ мене в квартирі не працює опалення з 3 листопада. Дзвонила по телефону двічі, але ніхто не відповів. Будь ласка, швидко це виправте, оскільки в квартирі 14 градусів, а у мене є маленька дитина.\n\nЧекаю на відповідь,\nОксана Коваленко"
+      }
+    },
+    {
+      "id": "landlord-pl-2",
+      "task": "landlord",
+      "target": "pl",
+      "rules": {
+        "hits": 5,
+        "ms": 93.24,
+        "ids": [
+          "pl-informal-greeting",
+          "any-cyrillic-left",
+          "pl-ty-form-to-stranger",
+          "pl-mieszkam-na-ulicy",
+          "pl-diacritics"
+        ],
+        "expected": 5,
+        "expected_found": 5
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 41.69,
+        "prompt_tokens": 318,
+        "gen_tokens": 867,
+        "gen_tok_per_s": 21.5,
+        "prompt_tok_per_s": 228.33,
+        "finish": "stop",
+        "errors": [],
+        "changes": 4,
+        "register": "ok",
+        "expect_register": "too_informal",
+        "reasons_from_rules": 4
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 3.69,
+        "gen_tokens": 67,
+        "gen_tok_per_s": 21.37
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 2,
+        "kept": 1,
+        "missing": [
+          "Iryna"
+        ]
+      },
+      "seconds_total": 45.39,
+      "output": {
+        "corrected": "Szanowna Pani, chciałbym poinformować, że w łazience na suficie od tygodnia cieknie woda. Czy mogłaby Pani wysłać hydraulika w sobotę? Mieszkam przy ulicy Lipowa 12, m. 4.",
+        "changes": [
+          {
+            "from": "Cześć, chcę powiedzieć że w łazience jest cieknie woda z sufitu już tydzień.",
+            "to": "Szanowna Pani, chciałbym poinformować, że w łazience na suficie od tygodnia cieknie woda.",
+            "type": "translation",
+            "why_uk": "«Cześć/Hej» звучить як до друга. «Witam» багато хто в Польщі вважає неввічливим від молодшої чи нижчої за статусом особи. До установи, орендодавця, вчителя краще «Dzień dobry» або «Szanowna Pani / Szanowny Panie».",
+            "why_model_uk": "Треба використовувати формальне звернення 'Szanowna Pani / Szanowny Panie', а не розмовне 'Cześć'. 'Chciałbym poinformować' звучить більш коректно, ніж 'chcę powiedzieć'. 'Cieknie' замість 'cieknie' — граматична помилка з артиклем.",
+            "rule_id": "pl-informal-greeting"
+          },
+          {
+            "from": "Możesz przysłać hydraulika w sobotę?",
+            "to": "Czy mogłaby Pani wysłać hydraulika w sobotę?",
+            "type": "register",
+            "why_uk": "Звертання на «ти» до незнайомої людини чи установи польською грубе. Замість «możesz» пишіть «może Pan / może Pani», замість «twój» — «Pana / Pani».",
+            "why_model_uk": "Треба використовувати формальне 'Czy mogłaby Pani' замість розмовного 'Możesz'. 'Wysłać' замість 'przysłać' — граматична помилка з артиклем.",
+            "rule_id": "pl-ty-form-to-stranger"
+          },
+          {
+            "from": "Mieszkam na ulicy Lipowa 12 m. 4.",
+            "to": "Mieszkam przy ulicy Lipowa 12, m. 4.",
+            "type": "punctuation",
+            "why_uk": "Українською «живу на вулиці...», польською адресу пишуть «mieszkam przy ulicy Długiej 5» або «ul. Długa 5».",
+            "why_model_uk": "Треба додати 'przy' перед назвою вулиці, оскільки в українській мові це не потрібно, а в польській — обов'язково. 'Mieszkam na ulicy' — граматична помилка з артиклем.",
+            "rule_id": "pl-mieszkam-na-ulicy"
+          },
+          {
+            "from": "Dziekuje, Iryna",
+            "to": "Dziękuję",
+            "type": "vocabulary",
+            "why_uk": "Без польських літер (ą, ę, ś, ż...) текст виглядає недбало, а в офіційному листі це помітно. Наприклад «proszę», «dziękuję», «się».",
+            "why_model_uk": "Треба виправити помилку з артиклем: 'Dziękuję' замість 'Dziekuje'. 'Dziekuje' — граматична помилка з артиклем.",
+            "rule_id": "pl-diacritics"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Використання 'Szanowna Pani / Szanowny Panie' є ввічливим і формальним, що відповідає зверненню до орендодавця. 'Można wysłać' звучить більш формально, ніж 'możesz przysłać', оскільки використовується формальна мова."
+        },
+        "back_translation_uk": "Шановна Пані, хотів би повідомити, що в ванній кімнаті на стелі від тижня тече вода. Чи могла б Ви відправити сантехніка в суботу? Я живу на вулиці Липова 12, кв. 4."
+      }
+    },
+    {
+      "id": "landlord-pl-3",
+      "task": "landlord",
+      "target": "pl",
+      "rules": {
+        "hits": 1,
+        "ms": 2.08,
+        "ids": [
+          "pl-diacritics"
+        ],
+        "expected": 1,
+        "expected_found": 1
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 26.58,
+        "prompt_tokens": 161,
+        "gen_tokens": 553,
+        "gen_tok_per_s": 21.47,
+        "prompt_tok_per_s": 193.3,
+        "finish": "stop",
+        "errors": [],
+        "changes": 3,
+        "register": "ok",
+        "expect_register": "ok",
+        "reasons_from_rules": 1
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 4.01,
+        "gen_tokens": 82,
+        "gen_tok_per_s": 22.69
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 4,
+        "kept": 3,
+        "missing": [
+          "Dmytro Shevchuk"
+        ]
+      },
+      "seconds_total": 30.59,
+      "output": {
+        "corrected": "Szanowna Pani,\n\nPrzepraszam, ale czynsz za listopad zapłacę 15 listopada, a nie 10, ponieważ pracodawca wypłaca wynagrodzenie później. Kwota 2400 zł zostanie przelana na to samo konto. Proszę o zrozumienie.",
+        "changes": [
+          {
+            "from": "Prosze o zrozumienie.",
+            "to": "Proszę o zrozumienie.",
+            "type": "translation",
+            "why_uk": "Без польських літер (ą, ę, ś, ż...) текст виглядає недбало, а в офіційному листі це помітно. Наприклад «proszę», «dziękuję», «się».",
+            "why_model_uk": "Треба використовувати форму 'Proszę' замість 'Prosze', бо це формальна мова.",
+            "rule_id": "pl-diacritics"
+          },
+          {
+            "from": "10",
+            "to": "15 listopada",
+            "type": "punctuation",
+            "why_uk": "У даті потрібно використовувати 'listę' замість цифри, щоб було зрозуміліше."
+          },
+          {
+            "from": "2400 zł",
+            "to": "2400 zł zostanie przelana na to samo konto.",
+            "type": "word_order",
+            "why_uk": "У польській мові потрібно правильно ставити артиклі та закінчення слів, щоб було зрозуміліше."
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Лист написаний від особи, яка звертається до приватного власника неформально, але коректно. Використовуються правильні форми звернення та структура листа."
+        },
+        "back_translation_uk": "Шановна Пані,\n\nВибачте, але орендну плату за листопад заплачу 15 листопада, а не 10, оскільки роботодавець виплачує заробітну плату пізніше. Сума 2400 злотих буде переведена на те саме рахунок. Прошу про розуміння."
+      }
+    },
+    {
+      "id": "landlord-en-1",
+      "task": "landlord",
+      "target": "en",
+      "rules": {
+        "hits": 7,
+        "ms": 79.65,
+        "ids": [
+          "en-informal-greeting",
+          "en-i-want",
+          "en-since-duration",
+          "en-make-photo",
+          "en-on-photo",
+          "en-explain-me",
+          "en-waiting-for-answer"
+        ],
+        "expected": 7,
+        "expected_found": 7
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 33.35,
+        "prompt_tokens": 967,
+        "gen_tokens": 635,
+        "gen_tok_per_s": 21.77,
+        "prompt_tok_per_s": 229.52,
+        "finish": "stop",
+        "errors": [],
+        "changes": 5,
+        "register": "ok",
+        "expect_register": null,
+        "reasons_from_rules": 5
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 4.73,
+        "gen_tokens": 91,
+        "gen_tok_per_s": 21.96
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 2,
+        "kept": 1,
+        "missing": [
+          "Olena"
+        ]
+      },
+      "seconds_total": 38.08,
+      "output": {
+        "corrected": "Dear Mr. Brown,\n\nI would like to inform you that the washing machine in the apartment has been broken for two weeks. I took a photo, and in the photo you can see water on the floor. Please explain to me who must pay for the repair.\nI look forward to hearing from you.",
+        "changes": [
+          {
+            "from": "Hello Mr Brown",
+            "to": "Dear Mr. Brown",
+            "type": "translation",
+            "why_uk": "У діловому листі англійською пишуть «Dear Ms Smith,» або «Dear Sir or Madam,». «Hi/Hey» — для друзів і колег.",
+            "why_model_uk": "Використання 'Dear Mr. Brown' є ввічливішим, ніж 'Hello Mr. Brown'.",
+            "rule_id": "en-informal-greeting"
+          },
+          {
+            "from": "I want to tell that the washing machine in apartment is broken since two weeks.",
+            "to": "I would like to inform you that the washing machine in the apartment has been broken for two weeks.",
+            "type": "grammar",
+            "why_uk": "Пряме «I want» у проханні звучить різко. Ввічливіше «I would like to ...», «Could you please ...».",
+            "why_model_uk": "Пряме 'I want' у проханні звучить різко. Ввічливіше 'I would like to ...', 'Could you please ...'.",
+            "rule_id": "en-i-want"
+          },
+          {
+            "from": "I made a photo, on the photo you can see water on floor.",
+            "to": "I took a photo, and in the photo you can see water on the floor.",
+            "type": "vocabulary",
+            "why_uk": "Калька з «зробити фото». Англійською «take a photo».",
+            "why_model_uk": "Калька з 'зробити фото'. Англійською 'take a photo'.",
+            "rule_id": "en-make-photo"
+          },
+          {
+            "from": "Please explain me who must pay for repair.",
+            "to": "Please explain to me who must pay for the repair.",
+            "type": "grammar",
+            "why_uk": "Калька з «поясніть мені» (давальний відмінок). Англійською потрібне «to»: «explain to me».",
+            "why_model_uk": "Калька з 'поясніть мені' (давальний відмінок). Англійською потрібне 'to': 'explain to me'.",
+            "rule_id": "en-explain-me"
+          },
+          {
+            "from": "Waiting for your answer",
+            "to": "I look forward to hearing from you.",
+            "type": "register",
+            "why_uk": "Калька з «чекаю на вашу відповідь». Стандартна англійська фраза: «I look forward to hearing from you.»",
+            "why_model_uk": "Калька з 'чекаю на вашу відповідь'. Стандартна англійська фраза: 'I look forward to hearing from you.'",
+            "rule_id": "en-waiting-for-answer"
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Використання 'Dear Mr. Brown' є ввічливим, але можна також написати 'Dear Sir or Madam' для анонімного листа. 'I would like to inform you' звучить ввічливіше, ніж 'I want to tell that'. 'Please explain to me' більш коректне, ніж 'explain me'."
+        },
+        "back_translation_uk": "Шановний пане Браун,\n\nЯ хотів би повідомити вас, що пральна машина в квартирі зламана вже два тижні. Я зробив фото, і на фото ви можете побачити воду на підлозі. Будь ласка, поясніть мені, хто має заплатити за ремонт.\n\nЗ нетерпінням чекаю на вашу відповідь."
+      }
+    },
+    {
+      "id": "landlord-en-2",
+      "task": "landlord",
+      "target": "en",
+      "rules": {
+        "hits": 3,
+        "ms": 40,
+        "ids": [
+          "en-am-agree",
+          "en-depend-from",
+          "any-cyrillic-left"
+        ],
+        "expected": 3,
+        "expected_found": 3
+      },
+      "coach": {
+        "ok": true,
+        "valid_first_try": true,
+        "attempts": 1,
+        "content_problems": [],
+        "seconds": 33.22,
+        "prompt_tokens": 163,
+        "gen_tokens": 714,
+        "gen_tok_per_s": 22.04,
+        "prompt_tok_per_s": 193.56,
+        "finish": "stop",
+        "errors": [],
+        "changes": 5,
+        "register": "ok",
+        "expect_register": "ok",
+        "reasons_from_rules": 2
+      },
+      "back": {
+        "ok": true,
+        "valid_first_try": true,
+        "seconds": 4.34,
+        "gen_tokens": 85,
+        "gen_tok_per_s": 21.48
+      },
+      "new_numbers": [],
+      "facts": {
+        "total": 5,
+        "kept": 5,
+        "missing": []
+      },
+      "seconds_total": 37.57,
+      "output": {
+        "corrected": "Dear Mrs. Kowalska,\nI agree to extend the contract for one year, but the rent of 3100 PLN depends on you. Can we meet on November 12? I can come after 18:00.\nBest regards,\nSerhii Melnyk",
+        "changes": [
+          {
+            "from": "I am agree to extend the contract for one year",
+            "to": "I agree to extend the contract for one year",
+            "type": "grammar",
+            "why_uk": "Калька з «я згоден». Англійською «agree» — дієслово, без «am»: «I agree».",
+            "why_model_uk": "Використано 'I agree' замість 'I am agree', оскільки 'agree' — це дієслово, яке не потребує допоміжного дієслова 'to be'.",
+            "rule_id": "en-am-agree"
+          },
+          {
+            "from": "rent 3100 PLN it depends from you",
+            "to": "the rent of 3100 PLN depends on you",
+            "type": "vocabulary",
+            "why_uk": "Калька з «залежати від». Англійською «depend on».",
+            "why_model_uk": "Використано 'depends on' замість 'depends from', оскільки 'depend on' — це стандартна конструкція для вираження залежності в англійській мові.",
+            "rule_id": "en-depend-from"
+          },
+          {
+            "from": "Can we meet on 12 November?",
+            "to": "Can we meet on November 12?",
+            "type": "punctuation",
+            "why_uk": "Додано пробіл після '12' для дотримання правил пунктуації в англійській мові."
+          },
+          {
+            "from": "Best regards, Serhii Melnyk",
+            "to": "Best regards,\nSerhii Melnyk",
+            "type": "punctuation",
+            "why_uk": "Додано двокрапку після 'Best regards' для стандартного оформлення ділового листа."
+          },
+          {
+            "from": "я можу прийти після 18:00",
+            "to": "I can come after 18:00.",
+            "type": "translation",
+            "why_uk": "Переклад речення 'я можу прийти після 18:00' на англійську мову з урахуванням правильного вживання часу та ввічливості."
+          }
+        ],
+        "register": {
+          "level": "ok",
+          "note_uk": "Використано формальне звернення 'Dear Mrs. Kowalska' замість 'Cześć' або 'Ty' для ввічливості. Уникано прямого звернення 'Pan/Pani' через відсутність контексту. Використано 'agree' замість 'am agree' для узгодження з граматикою англійської мови."
+        },
+        "back_translation_uk": "Шановна пані Ковальська,\nЯ згоден продовжити контракт на один рік, але орендна плата 3100 PLN залежить від вас. Чи зможемо ми зустрітися 12 листопада? Я можу приїхати після 18:00.\nЗ повагою,\nСергій Мельник"
+      }
+    }
+  ]
+}
